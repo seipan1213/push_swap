@@ -1,8 +1,9 @@
-NAME		=	minitalk
+NAME		=	push_swap
 SRCSDIR		=	./srcs
 
 PUSH_SWAP_NAME	=	push_swap
-PUSH_SWAP_SRCS	=	${SRCSDIR}/*.c
+PUSH_SWAP_SRCS_NAME =  lst_utils.c   main.c   push_swap.c   quick_sort.c   utils.c
+PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}, ${SRCS_NAME})
 PUSH_SWAP_OBJS	=	${PUSH_SWAP_SRCS:.c=.o}
 
 INCLUDES	=	-I ./includes -I ${LIBFTDIR}
@@ -12,9 +13,7 @@ LIBFT		=	${LIBFTDIR}/libft.a
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 
-${NAME}: ${PUSH_SWAP_NAME} ${SERVER_NAME}
-
-bonus: ${PUSH_SWAP_NAME_BONUS} ${SERVER_NAME_BONUS}
+${NAME}: ${PUSH_SWAP_NAME}
 
 all: ${NAME}
 

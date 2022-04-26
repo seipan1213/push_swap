@@ -10,7 +10,7 @@ void long_swap(long *la, long *lb)
 	*lb = tmp;
 }
 
-int quick_sort(long arr[], int left, int right)
+void quick_sort(long arr[], int left, int right)
 {
 	int i;
 	int j;
