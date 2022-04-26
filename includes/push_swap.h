@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/04/26 14:54:36 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/04/26 15:43:17 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_push_swap
 {
 	long lst[ARG_LIMIT + 10];
 	long sorted_lst[ARG_LIMIT + 10];
-	size_t lst_size;
+	int lst_size;
 } t_push_swap;
 
 void put_err_exit(int exit_num);
@@ -56,6 +56,8 @@ void dcl_lst_addfront(t_dcl_lst *lst, long value);
 void dcl_lst_addback(t_dcl_lst *lst, long value);
 t_dcl_lst *make_dcl_lst(int size, char **str);
 t_dcl_lst *make_init_dcl_lst();
+void ps_init_lst(t_push_swap *ps, char **lst);
+void push_swap(int argc, char **argv);
 
 void quick_sort(long arr[], int left, int right);
 

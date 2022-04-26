@@ -2,8 +2,8 @@ NAME		=	push_swap
 SRCSDIR		=	./srcs
 
 PUSH_SWAP_NAME	=	push_swap
-PUSH_SWAP_SRCS_NAME =  lst_utils.c   main.c   push_swap.c   quick_sort.c   utils.c
-PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}, ${SRCS_NAME})
+PUSH_SWAP_SRCS_NAME =  lst_utils.c main.c push_swap.c quick_sort.c utils.c
+PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}/, ${PUSH_SWAP_SRCS_NAME})
 PUSH_SWAP_OBJS	=	${PUSH_SWAP_SRCS:.c=.o}
 
 INCLUDES	=	-I ./includes -I ${LIBFTDIR}
