@@ -36,23 +36,3 @@ int quick_sort(long arr[], int left, int right)
 	if (j + 1 < right)
 		quick_sort(arr, j + 1, right);
 }
-
-void main(int argc, char **argv)
-{
-	long *arr;
-
-	arr = malloc(sizeof(long *) * argc);
-	int i = 0;
-	while (i < argc - 1)
-	{
-		arr[i] = atol(argv[i + 1]);
-		i++;
-	}
-	quick_sort(arr, 0, argc - 2);
-	i = 0;
-	while (i < argc - 1)
-	{
-		printf("%ld\n", arr[i]);
-		i++;
-	}
-}
