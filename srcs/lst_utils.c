@@ -59,3 +59,19 @@ t_dcl_lst *make_init_dcl_lst()
 	lst->prev = lst;
 	return lst;
 }
+
+int dcl_lst_size(t_dcl_lst *lst)
+{
+	int index;
+
+	while ((*lst).value != NIL)
+		lst = lst->next;
+	lst = lst->next;
+	index = 0;
+	while ((*lst).value != NIL)
+	{
+		lst = lst->next;
+		index++;
+	}
+	return (index);
+}
