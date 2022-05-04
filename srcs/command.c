@@ -76,12 +76,28 @@ bool rr(t_dcl_lst *a, t_dcl_lst *b)
 	return (ret);
 }
 
-bool rra(t_dcl_lst *a, t_dcl_lst *b)
+bool rrab(t_dcl_lst *a)
 {
+	t_dcl_lst *a_front;
+	t_dcl_lst *a_back;
+
+	a_front = get_first_lst(a);
+	a_back = get_last_lst(a);
+	if (a_front == a_back)
+		return (true);
+	a->next = a_front->next;
+	a->prev = a_front;
+	a->prev->next = a;
+	a->next->prev = a;
+	a_back->next = a_front;
+	a_front->prev = a_back;
+	return (true);
 }
-bool rrb(t_dcl_lst *a, t_dcl_lst *b)
-{
-}
+
 bool rrr(t_dcl_lst *a, t_dcl_lst *b)
 {
+	bool ret;
+
+	ret = rrab(a) && rrab(b);
+	return (ret);
 }
