@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/04 19:45:32 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:49:18 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ bool sab(t_dcl_lst *a);
 bool ss(t_dcl_lst *a, t_dcl_lst *b);
 bool pab(t_dcl_lst *a, t_dcl_lst *b);
 bool rab(t_dcl_lst *a);
+bool rr(t_dcl_lst *a, t_dcl_lst *b);
+
 #endif

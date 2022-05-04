@@ -68,12 +68,14 @@ bool rab(t_dcl_lst *a)
 	return (true);
 }
 
-bool rb(t_dcl_lst *a, t_dcl_lst *b)
-{
-}
 bool rr(t_dcl_lst *a, t_dcl_lst *b)
 {
+	bool ret;
+
+	ret = rab(a) && rab(b);
+	return (ret);
 }
+
 bool rra(t_dcl_lst *a, t_dcl_lst *b)
 {
 }
