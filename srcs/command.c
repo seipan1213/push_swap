@@ -52,6 +52,20 @@ bool pab(t_dcl_lst *a, t_dcl_lst *b)
 
 bool rab(t_dcl_lst *a)
 {
+	t_dcl_lst *a_front;
+	t_dcl_lst *a_back;
+
+	a_front = get_first_lst(a);
+	a_back = get_last_lst(a);
+	if (a_front == a_back)
+		return (true);
+	a->next = a_back;
+	a->prev = a_back->prev;
+	a->prev->next = a;
+	a->next->prev = a;
+	a_back->next = a_front;
+	a_front->prev = a_back;
+	return (true);
 }
 
 bool rb(t_dcl_lst *a, t_dcl_lst *b)

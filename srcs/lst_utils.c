@@ -83,3 +83,11 @@ t_dcl_lst *get_first_lst(t_dcl_lst *lst)
 	lst = lst->next;
 	return (lst);
 }
+
+t_dcl_lst *get_last_lst(t_dcl_lst *lst)
+{
+	while (lst->value != NIL)
+		lst = lst->next;
+	lst = lst->prev;
+	return (lst);
+}
