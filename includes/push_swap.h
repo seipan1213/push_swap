@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/04/26 16:37:59 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:23:11 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ t_dcl_lst *make_init_dcl_lst();
 void ps_init_lst(t_push_swap *ps, char **lst);
 void push_swap(int argc, char **argv);
 int dcl_lst_size(t_dcl_lst *lst);
+t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 
 void quick_sort(long arr[], int left, int right);
 
-bool sa(t_dcl_lst *a);
+bool sab(t_dcl_lst *a);
+bool ss(t_dcl_lst *a, t_dcl_lst *b);
+bool pab(t_dcl_lst *a, t_dcl_lst *b);
 #endif

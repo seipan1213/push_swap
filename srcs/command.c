@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-bool sa(t_dcl_lst *a)
+bool sab(t_dcl_lst *a)
 {
 	long tmp;
 	int size;
@@ -15,21 +15,45 @@ bool sa(t_dcl_lst *a)
 	return (true);
 }
 
-bool sb(t_dcl_lst *a, t_dcl_lst *b)
-{
-}
 bool ss(t_dcl_lst *a, t_dcl_lst *b)
 {
+	bool ret;
+
+	ret = sab(a);
+	if (!ret)
+	{
+		sab(a);
+		return (ret);
+	}
+	ret = sab(b);
+	if (!ret)
+	{
+		sab(b);
+		return (ret);
+	}
+	return (true);
 }
-bool pa(t_dcl_lst *a, t_dcl_lst *b)
+
+bool pab(t_dcl_lst *a, t_dcl_lst *b)
+{
+	t_dcl_lst *b_front;
+
+	b_front = get_first_lst(b);
+	if (b_front->value == NIL)
+		return (false);
+	b_front->next->prev = b_front->prev;
+	b_front->prev->next = b_front->next;
+	b_front->prev = a;
+	b_front->next = a->next;
+	a->next = b_front;
+	b_front->next->prev = b_front;
+	return (true);
+}
+
+bool rab(t_dcl_lst *a)
 {
 }
-bool pb(t_dcl_lst *a, t_dcl_lst *b)
-{
-}
-bool ra(t_dcl_lst *a, t_dcl_lst *b)
-{
-}
+
 bool rb(t_dcl_lst *a, t_dcl_lst *b)
 {
 }

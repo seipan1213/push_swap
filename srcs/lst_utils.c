@@ -75,3 +75,11 @@ int dcl_lst_size(t_dcl_lst *lst)
 	}
 	return (index);
 }
+
+t_dcl_lst *get_first_lst(t_dcl_lst *lst)
+{
+	while (lst->value != NIL)
+		lst = lst->next;
+	lst = lst->next;
+	return (lst);
+}
