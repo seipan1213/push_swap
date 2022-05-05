@@ -1,103 +1,87 @@
 #include "push_swap.h"
 
-bool sab(t_dcl_lst *a)
+bool sa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	long tmp;
-	int size;
-
-	size = dcl_lst_size(a);
-	if (size <= 1)
-		return (false);
-	a = a->next;
-	tmp = a->value;
-	a->value = a->next->value;
-	a->next->value = tmp;
+	(void)b;
+	sab(a);
+	dcl_lst_addback(ps->ans, SA);
 	return (true);
 }
 
-bool ss(t_dcl_lst *a, t_dcl_lst *b)
+bool sb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	bool ret;
-
-	ret = sab(a);
-	if (!ret)
-	{
-		sab(a);
-		return (ret);
-	}
-	ret = sab(b);
-	if (!ret)
-	{
-		sab(b);
-		return (ret);
-	}
+	(void)a;
+	sab(b);
+	dcl_lst_addback(ps->ans, SB);
 	return (true);
 }
 
-bool pab(t_dcl_lst *a, t_dcl_lst *b)
+bool ss(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	t_dcl_lst *b_front;
-
-	b_front = get_first_lst(b);
-	if (b_front->value == NIL)
-		return (false);
-	b_front->next->prev = b_front->prev;
-	b_front->prev->next = b_front->next;
-	b_front->prev = a;
-	b_front->next = a->next;
-	a->next = b_front;
-	b_front->next->prev = b_front;
+	sab(a);
+	sab(b);
+	dcl_lst_addback(ps->ans, SS);
 	return (true);
 }
 
-bool rab(t_dcl_lst *a)
+bool pa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	t_dcl_lst *a_front;
-	t_dcl_lst *a_back;
-
-	a_front = get_first_lst(a);
-	a_back = get_last_lst(a);
-	if (a_front == a_back)
-		return (true);
-	a->next = a_back;
-	a->prev = a_back->prev;
-	a->prev->next = a;
-	a->next->prev = a;
-	a_back->next = a_front;
-	a_front->prev = a_back;
+	pab(a, b);
+	dcl_lst_addback(ps->ans, PA);
 	return (true);
 }
 
-bool rr(t_dcl_lst *a, t_dcl_lst *b)
+bool pb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	bool ret;
-
-	ret = rab(a) && rab(b);
-	return (ret);
-}
-
-bool rrab(t_dcl_lst *a)
-{
-	t_dcl_lst *a_front;
-	t_dcl_lst *a_back;
-
-	a_front = get_first_lst(a);
-	a_back = get_last_lst(a);
-	if (a_front == a_back)
-		return (true);
-	a->next = a_front->next;
-	a->prev = a_front;
-	a->prev->next = a;
-	a->next->prev = a;
-	a_back->next = a_front;
-	a_front->prev = a_back;
+	pab(b, a);
+	dcl_lst_addback(ps->ans, PB);
 	return (true);
 }
 
-bool rrr(t_dcl_lst *a, t_dcl_lst *b)
+bool ra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	bool ret;
+	(void)b;
+	rab(a);
+	dcl_lst_addback(ps->ans, RA);
+	return (true);
+}
 
-	ret = rrab(a) && rrab(b);
-	return (ret);
+bool rb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	(void)a;
+	rab(b);
+	dcl_lst_addback(ps->ans, RB);
+	return (true);
+}
+
+bool rr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	rab(a);
+	rab(b);
+	dcl_lst_addback(ps->ans, RR);
+	return (true);
+}
+
+bool rra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	(void)b;
+	rrab(a);
+	dcl_lst_addback(ps->ans, RRA);
+	return (true);
+}
+
+bool rrb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	(void)a;
+	rrab(b);
+	dcl_lst_addback(ps->ans, RRB);
+	return (true);
+}
+
+bool rrr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	rrab(a);
+	rrab(b);
+	dcl_lst_addback(ps->ans, RRR);
+	return (true);
 }

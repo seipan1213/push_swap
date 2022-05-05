@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/04/26 16:10:09 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:52:03 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_push_swap *ps_init(int argc, char **argv)
 		put_err_exit(1);
 	ps->lst_size = argc - 1;
 	ps_init_lst(ps, argv + 1);
+	ps->ans = make_init_dcl_lst();
 	return (ps);
 }
 
@@ -58,6 +59,7 @@ void push_swap(int argc, char **argv)
 	(void)a;
 	(void)b;
 	(void)ps;
+	sort_stack(a, b, ps);
 }
 
 int main(int argc, char **argv)
