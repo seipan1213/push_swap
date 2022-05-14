@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/05 23:46:19 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:21:33 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "libft.h"
 
 #define NIL -3000000000
-#define ARG_LIMIT 5000
+#define ARG_LIMIT 100
 
 typedef enum e_cmd
 {
@@ -46,9 +46,10 @@ typedef struct s_dcl_lst
 
 typedef struct s_push_swap
 {
-	long lst[ARG_LIMIT + 10];
 	long sorted_lst[ARG_LIMIT + 10];
+	int next_want_index;
 	int lst_size;
+	int now_sort_size;
 	t_dcl_lst *ans;
 } t_push_swap;
 
@@ -64,11 +65,15 @@ void push_swap(int argc, char **argv);
 int dcl_lst_size(t_dcl_lst *lst);
 t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 t_dcl_lst *get_last_lst(t_dcl_lst *lst);
+long get_mid_value(t_dcl_lst *lst);
 
 void quick_sort(long arr[], int left, int right);
 
 void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void div_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
 
 bool sab(t_dcl_lst *a);
 bool pab(t_dcl_lst *a, t_dcl_lst *b);

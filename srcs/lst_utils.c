@@ -91,3 +91,22 @@ t_dcl_lst *get_last_lst(t_dcl_lst *lst)
 	lst = lst->prev;
 	return (lst);
 }
+
+long get_mid_value(t_dcl_lst *lst)
+{
+	long lst_ary[ARG_LIMIT + 10];
+	t_dcl_lst *tmp_lst;
+	int index;
+
+	tmp_lst = get_first_lst(lst);
+	ft_bzero(lst_ary, ARG_LIMIT + 10);
+	index = 0;
+	while (tmp_lst->value != NIL)
+	{
+		lst_ary[index] = tmp_lst->value;
+		index++;
+		tmp_lst = tmp_lst->next;
+	}
+	quick_sort(lst_ary, 0, index - 1);
+	return (lst_ary[index / 2]);
+}
