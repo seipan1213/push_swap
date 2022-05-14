@@ -36,4 +36,7 @@ fclean: clean
 
 re: fclean all
 
+debug: CFLAGS += -g -fsanitize=address
+debug: re
+
 .PHONY: all bonus clean fclean re
