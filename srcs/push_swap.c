@@ -24,7 +24,7 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		if (get_first_lst(a)->value <= mid)
 			pb(a, b, ps);
 		else
-			rra(a, b, ps);
+			ra(a, b, ps);
 		index++;
 	}
 	ps->now_sort_size = div_up(ps->now_sort_size, 2);
@@ -46,12 +46,12 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		if (selected_value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);
-			rra(a, b, ps);
+			ra(a, b, ps);
 			ps->next_want_index++;
 			ps->now_sort_size--;
 		}
 		if (is_sort)
-			rrb(a, b, ps);
+			rb(a, b, ps);
 		else
 			pa(a, b, ps);
 	}
