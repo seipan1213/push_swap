@@ -3,7 +3,7 @@ SRCSDIR		=	./srcs
 
 DEBUG_NAME	=	debug
 DEBUG_SRCS_NAME =  debug.c
-DEBUG_SRCS	=	debug.c ../srcs/command_org.c ../srcs/command.c ../srcs/lst_utils.c ../srcs/utils.c ../srcs/quick_sort.c ../srcs/push_swap.c
+DEBUG_SRCS	=	main.c debug.c ../srcs/command_org.c ../srcs/command.c ../srcs/lst_utils.c ../srcs/utils.c ../srcs/quick_sort.c ../srcs/push_swap.c
 DEBUG_OBJS	=	${DEBUG_SRCS:.c=.o}
 
 INCLUDES	=	-I ../includes -I ${LIBFTDIR}
