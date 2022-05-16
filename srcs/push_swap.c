@@ -21,7 +21,7 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	mid = get_mid_value(a);
 	while (index < ps->now_sort_size)
 	{
-		if (get_first_lst(a)->value <= mid)
+		if (get_first_lst(a)->value < mid)
 			pb(a, b, ps);
 		else
 			ra(a, b, ps);
