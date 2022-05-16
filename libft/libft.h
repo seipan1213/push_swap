@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 01:16:23 by sehattor          #+#    #+#             */
-/*   Updated: 2022/04/12 19:53:21 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:13:10 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {
