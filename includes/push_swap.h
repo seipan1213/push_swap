@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/14 21:21:33 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:44:56 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 #define NIL -3000000000
 #define ARG_LIMIT 100
+#define MIN_SORT_NUM 4
 
 typedef enum e_cmd
 {
@@ -55,6 +56,7 @@ typedef struct s_push_swap
 
 void put_err_exit(int exit_num);
 void put_dcl_lst(t_dcl_lst *lst);
+int div_up(int num, int div_num);
 
 void dcl_lst_addfront(t_dcl_lst *lst, long value);
 void dcl_lst_addback(t_dcl_lst *lst, long value);
@@ -74,6 +76,9 @@ void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
+
+void put_ans(t_push_swap *ps);
+void put_cmd(int cmd);
 
 bool sab(t_dcl_lst *a);
 bool pab(t_dcl_lst *a, t_dcl_lst *b);

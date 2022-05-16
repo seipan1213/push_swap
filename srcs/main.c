@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/14 21:26:58 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:31:08 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void push_swap(int argc, char **argv)
 	a = make_dcl_lst(argc - 1, argv + 1);
 	b = make_init_dcl_lst();
 	ps = ps_init(argc, argv);
-	(void)a;
-	(void)b;
-	(void)ps;
+	if (is_sorted_lst(a, ps))
+		return;
 	sort_stack(a, b, ps);
 }
 

@@ -6,6 +6,11 @@ void put_err_exit(int exit_num)
 	exit(exit_num);
 }
 
+int div_up(int num, int div_num)
+{
+	return ((num + 1) / div_num);
+}
+
 void put_dcl_lst(t_dcl_lst *lst)
 {
 	lst = lst->next;

@@ -64,11 +64,11 @@ int dcl_lst_size(t_dcl_lst *lst)
 {
 	int index;
 
-	while ((*lst).value != NIL)
+	while (lst->value != NIL)
 		lst = lst->next;
 	lst = lst->next;
 	index = 0;
-	while ((*lst).value != NIL)
+	while (lst->value != NIL)
 	{
 		lst = lst->next;
 		index++;
@@ -97,16 +97,20 @@ long get_mid_value(t_dcl_lst *lst)
 	long lst_ary[ARG_LIMIT + 10];
 	t_dcl_lst *tmp_lst;
 	int index;
+	int mid_index;
 
 	tmp_lst = get_first_lst(lst);
-	ft_bzero(lst_ary, ARG_LIMIT + 10);
+	ft_bzero(lst_ary, sizeof(long) * ARG_LIMIT + 10);
 	index = 0;
+	mid_index = index / 2;
 	while (tmp_lst->value != NIL)
 	{
 		lst_ary[index] = tmp_lst->value;
 		index++;
 		tmp_lst = tmp_lst->next;
 	}
-	quick_sort(lst_ary, 0, index - 1);
-	return (lst_ary[index / 2]);
+	index--;
+	quick_sort(lst_ary, 0, index);
+	mid_index = div_up(index, 2);
+	return (lst_ary[mid_index]);
 }
