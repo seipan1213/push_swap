@@ -40,8 +40,8 @@ bool rab(t_dcl_lst *a)
 	a_back = get_last_lst(a);
 	if (a_front == a_back)
 		return (true);
-	a->next = a_front->next;
-	a->prev = a_front;
+	a->next = a_back;
+	a->prev = a_back->prev;
 	a->prev->next = a;
 	a->next->prev = a;
 	a_back->next = a_front;
@@ -58,8 +58,8 @@ bool rrab(t_dcl_lst *a)
 	a_back = get_last_lst(a);
 	if (a_front == a_back)
 		return (true);
-	a->next = a_back;
-	a->prev = a_back->prev;
+	a->next = a_front->next;
+	a->prev = a_front;
 	a->prev->next = a;
 	a->next->prev = a;
 	a_back->next = a_front;
