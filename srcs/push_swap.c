@@ -9,6 +9,23 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		move_a_stack(a, b, ps);
 		div_b_stack(a, b, ps);
 	}
+	// bを半分にしつづけて4要素以下になったらソートをする
+	// 50 -> 25 -> 13 -> 7 -> 4
+	//                     -> 3
+	//                -> 6 -> 3
+	//                     -> 3
+	//          -> 12 -> 6 -> 3
+	//                     -> 3
+	//                -> 6 -> 3
+	//                     -> 3
+	//    -> 25 -> 13 -> 7 -> 4
+	//                     -> 3
+	//                -> 6 -> 3
+	//                     -> 3
+	//          -> 12 -> 6 -> 3
+	//                     -> 3
+	//                -> 6 -> 3
+	//                     -> 3
 }
 
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
@@ -20,7 +37,7 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	mid = get_mid_value(a);
 	while (index < ps->now_sort_size)
 	{
-		if (get_first_lst(a)->value < mid)
+		if (get_first_lst(a)->value <= mid)
 			pb(a, b, ps);
 		else
 			ra(a, b, ps);
@@ -41,7 +58,7 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	while (dcl_lst_size(b) > 0)
 	{
 		selected_value = get_first_lst(b)->value;
-		is_sort = selected_value < b_mid || init_lst_size <= MIN_SORT_NUM;
+		is_sort = selected_value <= b_mid || init_lst_size <= MIN_SORT_NUM;
 		if (selected_value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);

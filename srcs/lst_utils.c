@@ -121,8 +121,9 @@ long get_mid_value(t_dcl_lst *lst)
 		index++;
 		tmp_lst = tmp_lst->next;
 	}
-	index--;
+	if (index > 0)
+		index--;
 	quick_sort(lst_ary, 0, index);
-	mid_index = div_up(index, 2);
+	mid_index = index / 2;
 	return (lst_ary[mid_index]);
 }

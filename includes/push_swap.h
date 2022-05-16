@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/16 18:30:46 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:28:16 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 #define NIL -3000000000
 #define ARG_LIMIT 1000
-#define MIN_SORT_NUM 4
+#define MIN_SORT_NUM 3
 
 typedef enum e_cmd
 {
