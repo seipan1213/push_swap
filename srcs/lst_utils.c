@@ -92,6 +92,18 @@ t_dcl_lst *get_last_lst(t_dcl_lst *lst)
 	return (lst);
 }
 
+void delete_lst(t_dcl_lst *lst)
+{
+	t_dcl_lst *prev;
+	t_dcl_lst *next;
+
+	prev = lst->prev;
+	next = lst->next;
+	prev->next = next;
+	next->prev = prev;
+	free(lst);
+}
+
 long get_mid_value(t_dcl_lst *lst)
 {
 	long lst_ary[ARG_LIMIT + 10];

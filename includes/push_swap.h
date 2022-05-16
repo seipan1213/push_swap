@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/16 15:06:43 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:30:46 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void push_swap(int argc, char **argv);
 int dcl_lst_size(t_dcl_lst *lst);
 t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 t_dcl_lst *get_last_lst(t_dcl_lst *lst);
+void delete_lst(t_dcl_lst *lst);
 long get_mid_value(t_dcl_lst *lst);
 
 void quick_sort(long arr[], int left, int right);
@@ -77,6 +78,7 @@ void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
+void reduction_stack(t_dcl_lst *lst);
 
 void put_ans(t_push_swap *ps);
 void put_cmd(int cmd);
@@ -98,4 +100,5 @@ bool rra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool rrb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool rrr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 
+void put_stack(t_dcl_lst *a, t_dcl_lst *b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/16 14:54:01 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:24:36 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void push_swap(int argc, char **argv)
 	if (is_sorted_lst(a, ps))
 		return;
 	sort_stack(a, b, ps);
+	reduction_stack(ps->ans);
+	put_ans(ps);
 }
 
 int main(int argc, char **argv)

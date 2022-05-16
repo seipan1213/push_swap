@@ -9,7 +9,6 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		move_a_stack(a, b, ps);
 		div_b_stack(a, b, ps);
 	}
-	put_ans(ps);
 }
 
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
@@ -124,4 +123,38 @@ void put_cmd(int cmd)
 		ft_putendl_fd("rrb", STDOUT_FILENO);
 	else if (cmd == RRR)
 		ft_putendl_fd("rrr", STDOUT_FILENO);
+}
+
+void reduction_stack(t_dcl_lst *lst)
+{
+	lst = get_first_lst(lst);
+	while (lst->value != NIL)
+	{
+		if ((lst->value == PA && lst->next->value == PB) ||
+			(lst->value == PB && lst->next->value == PA))
+		{
+			lst = lst->prev;
+			delete_lst(lst->next);
+			delete_lst(lst->next);
+		}
+		else if ((lst->value == SA && lst->next->value == SB) ||
+				 (lst->value == SB && lst->next->value == SA))
+		{
+			lst->value = SS;
+			delete_lst(lst->next);
+		}
+		else if ((lst->value == RA && lst->next->value == RB) ||
+				 (lst->value == RB && lst->next->value == RA))
+		{
+			lst->value = RR;
+			delete_lst(lst->next);
+		}
+		else if ((lst->value == RRA && lst->next->value == RRB) ||
+				 (lst->value == RRB && lst->next->value == RRA))
+		{
+			lst->value = RRR;
+			delete_lst(lst->next);
+		}
+		lst = lst->next;
+	}
 }

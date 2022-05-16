@@ -26,15 +26,15 @@ bool ss(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 
 bool pa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	pab(a, b);
-	dcl_lst_addback(ps->ans, PA);
+	if (pab(a, b))
+		dcl_lst_addback(ps->ans, PA);
 	return (true);
 }
 
 bool pb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	pab(b, a);
-	dcl_lst_addback(ps->ans, PB);
+	if (pab(b, a))
+		dcl_lst_addback(ps->ans, PB);
 	return (true);
 }
 
