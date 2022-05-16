@@ -21,3 +21,16 @@ void put_dcl_lst(t_dcl_lst *lst)
 	}
 	printf("\n");
 }
+
+void put_arr(long values[], int size)
+{
+	int index;
+
+	index = 0;
+	while (index < size)
+	{
+		printf("%ld\n", values[index]);
+		index++;
+	}
+	printf("\n");
+}
