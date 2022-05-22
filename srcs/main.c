@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/16 19:24:36 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/23 00:54:22 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ t_push_swap *ps_init(int argc, char **argv)
 	t_push_swap *ps;
 
 	ps = malloc(sizeof(t_push_swap));
-	ft_bzero(ps, sizeof(t_push_swap *));
+	ft_bzero(ps, sizeof(t_push_swap));
 	if (!ps)
 		put_err_exit(1);
 	ps->lst_size = argc - 1;
 	ps->now_sort_size = ps->lst_size;
 	ps->next_want_index = 0;
 	ps_init_lst(ps, argv + 1);
+	ps->stack_size_lst = make_init_dcl_lst();
 	ps->ans = make_init_dcl_lst();
 	return (ps);
 }

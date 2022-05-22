@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/16 21:28:16 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/05/23 01:40:23 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_push_swap
 	int next_want_index;
 	int lst_size;
 	int now_sort_size;
+	t_dcl_lst *stack_size_lst;
 	t_dcl_lst *ans;
 } t_push_swap;
 
@@ -72,9 +73,10 @@ void delete_lst(t_dcl_lst *lst);
 long get_mid_value(t_dcl_lst *lst);
 
 void quick_sort(long arr[], int left, int right);
-
+void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);

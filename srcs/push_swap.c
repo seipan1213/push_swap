@@ -2,33 +2,38 @@
 
 void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	div_a_stack(a, b, ps);
-	// div_b_stack(a, b, ps);
+	half_set_stack(a, b, ps);
 	while (!is_sorted_lst(a, ps))
 	{
-		// move_a_stack(a, b, ps);
-		div_b_stack(a, b, ps);
+		if (dcl_lst_size(b) <= MIN_SORT_NUM)
+			sort_b(a, b, ps);
+		while (dcl_lst_size(b) > 0)
+			div_b_stack(a, b, ps);
+		div_a_stack(a, b, ps);
+		if (dcl_lst_size(ps->stack_size_lst) == 0 && dcl_lst_size(b) == 0)
+			dcl_lst_addfront(ps->stack_size_lst, ps->lst_size - ps->next_want_index);
 	}
-	// bを半分にしつづけて4要素以下になったらソートをする
-	// 50 -> 25 -> 13 -> 7 -> 4
-	//                     -> 3
-	//                -> 6 -> 3
-	//                     -> 3
-	//          -> 12 -> 6 -> 3
-	//                     -> 3
-	//                -> 6 -> 3
-	//                     -> 3
-	//    -> 25 -> 13 -> 7 -> 4
-	//                     -> 3
-	//                -> 6 -> 3
-	//                     -> 3
-	//          -> 12 -> 6 -> 3
-	//                     -> 3
-	//                -> 6 -> 3
-	//                     -> 3
 }
 
-/*void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	long selected_value;
+
+	while (dcl_lst_size(b) > 0)
+	{
+		selected_value = get_first_lst(b)->value;
+		if (selected_value == ps->sorted_lst[ps->next_want_index])
+		{
+			pa(a, b, ps);
+			ra(a, b, ps);
+			ps->next_want_index++;
+		}
+		else
+			rb(a, b, ps);
+	}
+}
+
+void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	long mid;
 	int index;
@@ -43,14 +48,15 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 			ra(a, b, ps);
 		index++;
 	}
-	ps->now_sort_size = div_up(ps->now_sort_size, 2);
-}*/
+}
 
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	long selected_value;
+	t_dcl_lst *stack_size_first;
 
-	while ()
+	stack_size_first = get_first_lst(ps->stack_size_lst);
+	while (stack_size_first->value > 0)
 	{
 		selected_value = get_first_lst(a)->value;
 		if (selected_value == ps->sorted_lst[ps->next_want_index])
@@ -60,21 +66,24 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		}
 		else
 			pb(a, b, ps);
-		ps->now_sort_size--;
+		stack_size_first->value--;
 	}
+	if (stack_size_first->value != NIL)
+		delete_lst(stack_size_first);
 }
 
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	bool is_under;
 	long selected_value;
-	int init_lst_size;
 	long b_mid;
+	long stack_size;
+	int check_size;
 
 	b_mid = get_mid_value(b);
-	init_lst_size = dcl_lst_size(b);
-	ps->now_sort_size = dcl_lst_size(b);
-	while (dcl_lst_size(b) > 0)
+	check_size = dcl_lst_size(b);
+	stack_size = 0;
+	while (check_size > 0)
 	{
 		selected_value = get_first_lst(b)->value;
 		is_under = selected_value <= b_mid;
@@ -87,9 +96,13 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		else if (is_under)
 			rb(a, b, ps);
 		else
+		{
 			pa(a, b, ps);
-		ps->now_sort_size--;
+			stack_size++;
+		}
+		check_size--;
 	}
+	dcl_lst_addfront(ps->stack_size_lst, stack_size);
 }
 
 void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
