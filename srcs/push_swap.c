@@ -3,10 +3,10 @@
 void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	div_a_stack(a, b, ps);
-	div_b_stack(a, b, ps);
+	// div_b_stack(a, b, ps);
 	while (!is_sorted_lst(a, ps))
 	{
-		move_a_stack(a, b, ps);
+		// move_a_stack(a, b, ps);
 		div_b_stack(a, b, ps);
 	}
 	// bを半分にしつづけて4要素以下になったらソートをする
@@ -28,7 +28,7 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	//                     -> 3
 }
 
-void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+/*void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	long mid;
 	int index;
@@ -44,35 +44,52 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		index++;
 	}
 	ps->now_sort_size = div_up(ps->now_sort_size, 2);
+}*/
+
+void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	long selected_value;
+
+	while ()
+	{
+		selected_value = get_first_lst(a)->value;
+		if (selected_value == ps->sorted_lst[ps->next_want_index])
+		{
+			ra(a, b, ps);
+			ps->next_want_index++;
+		}
+		else
+			pb(a, b, ps);
+		ps->now_sort_size--;
+	}
 }
 
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	bool is_sort;
+	bool is_under;
 	long selected_value;
 	int init_lst_size;
 	long b_mid;
 
 	b_mid = get_mid_value(b);
 	init_lst_size = dcl_lst_size(b);
+	ps->now_sort_size = dcl_lst_size(b);
 	while (dcl_lst_size(b) > 0)
 	{
 		selected_value = get_first_lst(b)->value;
-		is_sort = selected_value <= b_mid || init_lst_size <= MIN_SORT_NUM;
+		is_under = selected_value <= b_mid;
 		if (selected_value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);
 			ra(a, b, ps);
 			ps->next_want_index++;
-			ps->now_sort_size--;
 		}
-		if (is_sort)
+		else if (is_under)
 			rb(a, b, ps);
 		else
 			pa(a, b, ps);
+		ps->now_sort_size--;
 	}
-	if (init_lst_size <= MIN_SORT_NUM)
-		ps->now_sort_size = ps->lst_size / 2;
 }
 
 void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
