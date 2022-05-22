@@ -17,17 +17,16 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 
 void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	long selected_value;
-
 	while (dcl_lst_size(b) > 0)
 	{
-		selected_value = get_first_lst(b)->value;
-		if (selected_value == ps->sorted_lst[ps->next_want_index])
+		if (get_first_lst(b)->value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);
 			ra(a, b, ps);
 			ps->next_want_index++;
 		}
+		else if (get_last_lst(b)->value == ps->sorted_lst[ps->next_want_index])
+			rrb(a, b, ps);
 		else
 			rb(a, b, ps);
 	}
