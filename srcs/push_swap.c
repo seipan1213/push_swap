@@ -17,13 +17,27 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 
 void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	while (dcl_lst_size(b) > 0)
+	int pool_count;
+
+	pool_count = 0;
+	while (dcl_lst_size(b) > 0 || pool_count > 0)
 	{
 		if (get_first_lst(b)->value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);
 			ra(a, b, ps);
 			ps->next_want_index++;
+		}
+		else if (get_first_lst(a)->value == ps->sorted_lst[ps->next_want_index])
+		{
+			ra(a, b, ps);
+			pool_count--;
+			ps->next_want_index++;
+		}
+		else if (get_first_lst(b)->value < get_first_lst(a)->value || pool_count <= 0)
+		{
+			pa(a, b, ps);
+			pool_count++;
 		}
 		else if (get_last_lst(b)->value == ps->sorted_lst[ps->next_want_index])
 			rrb(a, b, ps);

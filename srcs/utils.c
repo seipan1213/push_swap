@@ -13,7 +13,8 @@ int div_up(int num, int div_num)
 
 void put_dcl_lst(t_dcl_lst *lst)
 {
-	lst = lst->next;
+	while (lst->value != NIL)
+		lst = lst->next;
 	while (lst->value != NIL)
 	{
 		printf("%ld\n", lst->value);
