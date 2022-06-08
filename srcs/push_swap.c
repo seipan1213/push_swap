@@ -218,3 +218,129 @@ void reduction_stack(t_dcl_lst *lst)
 		lst = lst->next;
 	}
 }
+
+void update_ans(t_push_swap *ps, long turn)
+{
+	int ans_size;
+	t_dcl_lst *tmp_ans;
+
+	if (ps->max_turn <= turn)
+		return;
+	ps->max_turn = turn;
+	reset_lst(ps->ans);
+	ans_size = dcl_lst_size(ps->tmp_ans);
+	tmp_ans = get_first_lst(ps->tmp_ans);
+	while (ans_size > 0)
+	{
+		dcl_lst_addback(ps->ans, tmp_ans->value);
+		tmp_ans = tmp_ans->next;
+		ans_size--;
+	}
+}
+
+void sort_min_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+{
+	sort_dfs(a, b, ps, 0);
+}
+
+bool check_avoid_cmd(t_push_swap *ps, int cmd)
+{
+	t_dcl_lst *last;
+
+	last = get_last_lst(ps->tmp_ans);
+	if (last->value == PA && cmd == PB)
+		return (true);
+	if (last->value == PB && cmd == PA)
+		return (true);
+	if (last->value == RA && cmd == RRA)
+		return (true);
+	if (last->value == RB && cmd == RRB)
+		return (true);
+	if (last->value == RR && cmd == RRR)
+		return (true);
+	if (last->value == RRA && cmd == RA)
+		return (true);
+	if (last->value == RRB && cmd == RB)
+		return (true);
+	if (last->value == RRR && cmd == RR)
+		return (true);
+	if (last->value == SA && cmd == SA)
+		return (true);
+	if (last->value == SB && cmd == SB)
+		return (true);
+	if (last->value == SS && cmd == SS)
+		return (true);
+	return (false);
+}
+
+void sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn)
+{
+	int cmd;
+
+	cmd = -1;
+	if (turn >= ps->max_turn)
+		return;
+	if (dcl_lst_size(b) == 0 && is_sorted_lst(a, ps))
+	{
+		update_ans(ps, turn);
+		return;
+	}
+	while (cmd++ < 11)
+	{
+		if (check_avoid_cmd(ps, cmd))
+			continue;
+		only_run_cmd(a, b, cmd, true);
+		dcl_lst_addback(ps->tmp_ans, cmd);
+		sort_dfs(a, b, ps, turn + 1);
+		only_run_cmd(a, b, cmd, false);
+		delete_lst(get_last_lst(ps->tmp_ans));
+	}
+}
+
+void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type)
+{
+	if (type)
+		run_cmd(a, b, cmd);
+	else
+		run_r_cmd(a, b, cmd);
+}
+
+void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
+{
+	if (cmd == SA)
+		sab(a);
+	if (cmd == SB)
+		sab(b);
+	if (cmd == PA)
+		pab(a, b);
+	if (cmd == PB)
+		pab(b, a);
+	if (cmd == RA || cmd == RR)
+		rab(a);
+	if (cmd == RB || cmd == RR)
+		rab(b);
+	if (cmd == RRA || cmd == RRR)
+		rrab(a);
+	if (cmd == RRB || cmd == RRR)
+		rrab(b);
+}
+
+void run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
+{
+	if (cmd == SA)
+		sab(a);
+	if (cmd == SB)
+		sab(b);
+	if (cmd == PA)
+		pab(b, a);
+	if (cmd == PB)
+		pab(a, b);
+	if (cmd == RA || cmd == RR)
+		rrab(a);
+	if (cmd == RB || cmd == RR)
+		rrab(b);
+	if (cmd == RRA || cmd == RRR)
+		rab(a);
+	if (cmd == RRB || cmd == RRR)
+		rab(b);
+}

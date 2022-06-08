@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/08 23:16:55 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/09 01:08:08 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_push_swap *ps_init(int argc, char **argv)
 	ps_init_lst(ps, argv + 1);
 	ps->stack_size_lst = make_init_dcl_lst();
 	ps->ans = make_init_dcl_lst();
+	ps->tmp_ans = make_init_dcl_lst();
+	ps->max_turn = 4;
 	return (ps);
 }
 
@@ -75,11 +77,12 @@ void ps_init_lst(t_push_swap *ps, char **lst)
 
 void free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b)
 {
-	clear_lst(ps->ans);
-	clear_lst(ps->stack_size_lst);
-	free(ps);
 	clear_lst(a);
 	clear_lst(b);
+	clear_lst(ps->ans);
+	clear_lst(ps->tmp_ans);
+	clear_lst(ps->stack_size_lst);
+	free(ps);
 }
 
 void push_swap(int argc, char **argv)
@@ -96,7 +99,10 @@ void push_swap(int argc, char **argv)
 		free_push_swap(ps, a, b);
 		return;
 	}
-	sort_stack(a, b, ps);
+	if (dcl_lst_size(a) > 5)
+		sort_stack(a, b, ps);
+	else
+		sort_min_stack(a, b, ps);
 	reduction_stack(ps->ans);
 	put_ans(ps);
 	free_push_swap(ps, a, b);

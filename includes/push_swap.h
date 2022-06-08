@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/08 23:15:19 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/09 00:15:38 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #include "libft.h"
 
@@ -53,6 +54,8 @@ typedef struct s_push_swap
 	int now_sort_size;
 	t_dcl_lst *stack_size_lst;
 	t_dcl_lst *ans;
+	long max_turn;
+	t_dcl_lst *tmp_ans;
 } t_push_swap;
 
 void put_err_exit(int exit_num);
@@ -71,6 +74,7 @@ int dcl_lst_size(t_dcl_lst *lst);
 t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 t_dcl_lst *get_last_lst(t_dcl_lst *lst);
 void clear_lst(t_dcl_lst *lst);
+void reset_lst(t_dcl_lst *lst);
 void delete_lst(t_dcl_lst *lst);
 long get_mid_value(t_dcl_lst *lst);
 
@@ -83,6 +87,12 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
 void reduction_stack(t_dcl_lst *lst);
+void update_ans(t_push_swap *ps, long turn);
+void sort_min_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn);
+void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type);
+void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
+void run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
 
 void put_ans(t_push_swap *ps);
 void put_cmd(int cmd);
