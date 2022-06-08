@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/23 01:48:42 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/08 23:15:19 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ void dcl_lst_addback(t_dcl_lst *lst, long value);
 t_dcl_lst *make_dcl_lst(int size, char **str);
 t_dcl_lst *make_init_dcl_lst();
 void ps_init_lst(t_push_swap *ps, char **lst);
+bool same_arg(int argc, char **argv);
 void push_swap(int argc, char **argv);
 int dcl_lst_size(t_dcl_lst *lst);
 t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 t_dcl_lst *get_last_lst(t_dcl_lst *lst);
+void clear_lst(t_dcl_lst *lst);
 void delete_lst(t_dcl_lst *lst);
 long get_mid_value(t_dcl_lst *lst);
 

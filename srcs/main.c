@@ -6,16 +6,39 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/05/23 00:54:22 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/08 23:16:55 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+bool same_arg(int argc, char **argv)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			if (ft_strcmp(argv[i], argv[j]) == 0)
+			{
+				return (true);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (false);
+}
+
 bool input_check(int argc, char **argv)
 {
-	(void)argv;
 	if (argc == 1)
+		return (false);
+	else if (same_arg(argc, argv))
 		return (false);
 	return (true);
 }
@@ -50,6 +73,15 @@ void ps_init_lst(t_push_swap *ps, char **lst)
 	quick_sort(ps->sorted_lst, 0, ps->lst_size - 1);
 }
 
+void free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b)
+{
+	clear_lst(ps->ans);
+	clear_lst(ps->stack_size_lst);
+	free(ps);
+	clear_lst(a);
+	clear_lst(b);
+}
+
 void push_swap(int argc, char **argv)
 {
 	t_dcl_lst *a;
@@ -60,10 +92,14 @@ void push_swap(int argc, char **argv)
 	b = make_init_dcl_lst();
 	ps = ps_init(argc, argv);
 	if (is_sorted_lst(a, ps))
+	{
+		free_push_swap(ps, a, b);
 		return;
+	}
 	sort_stack(a, b, ps);
 	reduction_stack(ps->ans);
 	put_ans(ps);
+	free_push_swap(ps, a, b);
 }
 
 int main(int argc, char **argv)

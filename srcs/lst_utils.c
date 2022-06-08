@@ -92,6 +92,20 @@ t_dcl_lst *get_last_lst(t_dcl_lst *lst)
 	return (lst);
 }
 
+void clear_lst(t_dcl_lst *lst)
+{
+	int lst_size;
+	int index;
+
+	lst_size = dcl_lst_size(lst) + 1;
+	index = 0;
+	while (index < lst_size)
+	{
+		delete_lst(lst->next);
+		index++;
+	}
+}
+
 void delete_lst(t_dcl_lst *lst)
 {
 	t_dcl_lst *prev;
