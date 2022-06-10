@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 00:34:58 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:49:47 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void ps_init_lst(t_push_swap *ps, char **lst)
 	index = 0;
 	while (index < ps->lst_size)
 	{
-		ps->sorted_lst[index] = atol(lst[index]); // TODO: ft_
+		ps->sorted_lst[index] = ps_atol(lst[index]);
 		index++;
 	}
 	quick_sort(ps->sorted_lst, 0, ps->lst_size - 1);

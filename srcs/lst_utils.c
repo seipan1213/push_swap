@@ -41,7 +41,7 @@ t_dcl_lst *make_dcl_lst(int size, char **str)
 	lst = make_init_dcl_lst();
 	while (index < size)
 	{
-		dcl_lst_addback(lst, atol(str[index])); // TODO: ft_
+		dcl_lst_addback(lst, ps_atol(str[index]));
 		index++;
 	}
 	return lst;
