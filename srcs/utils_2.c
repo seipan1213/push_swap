@@ -1,49 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 01:24:55 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:55 by sehattor         ###   ########.fr       */
+/*   Created: 2022/06/11 01:24:32 by sehattor          #+#    #+#             */
+/*   Updated: 2022/06/11 01:24:33 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void long_swap(long *la, long *lb)
-{
-	long tmp;
-
-	tmp = *la;
-	*la = *lb;
-	*lb = tmp;
-}
-
-void quick_sort(long *arr, int left, int right)
+bool same_arg(int argc, char **argv)
 {
 	int i;
 	int j;
-	int pivot;
 
-	i = left;
-	j = right;
-	pivot = left;
-	while (1)
+	i = 0;
+	while (i < argc)
 	{
-		while (arr[i] < arr[pivot])
-			i++;
-		while (arr[pivot] < arr[j])
-			j--;
-		if (i >= j)
-			break;
-		long_swap(&arr[i], &arr[j]);
+		j = i + 1;
+		while (j < argc)
+		{
+			if (ft_strcmp(argv[i], argv[j]) == 0)
+			{
+				return (true);
+			}
+			j++;
+		}
 		i++;
-		j--;
 	}
-	if (left < i - 1)
-		quick_sort(arr, left, i - 1);
-	if (j + 1 < right)
-		quick_sort(arr, j + 1, right);
+	return (false);
+}
+
+bool input_check(int argc, char **argv)
+{
+	if (argc == 1)
+		return (false);
+	else if (same_arg(argc, argv))
+		return (false);
+	return (true);
 }

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   command_3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:23:23 by sehattor         ###   ########.fr       */
+/*   Created: 2022/06/11 01:24:16 by sehattor          #+#    #+#             */
+/*   Updated: 2022/06/11 01:24:17 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+bool rrr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	if (!input_check(argc, argv))
-		return (0);
-	push_swap(argc, argv);
+	rrab(a);
+	rrab(b);
+	dcl_lst_addback(ps->ans, RRR);
+	return (true);
 }

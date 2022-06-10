@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_stack_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:23:23 by sehattor         ###   ########.fr       */
+/*   Created: 2022/06/11 01:24:46 by sehattor          #+#    #+#             */
+/*   Updated: 2022/06/11 01:24:46 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	if (!input_check(argc, argv))
-		return (0);
-	push_swap(argc, argv);
+	int index;
+
+	index = 0;
+	while (index < ps->now_sort_size)
+	{
+		pb(a, b, ps);
+		index++;
+	}
 }
