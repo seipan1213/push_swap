@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:47 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/09 01:08:08 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:34:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_push_swap *ps_init(int argc, char **argv)
 	ps->stack_size_lst = make_init_dcl_lst();
 	ps->ans = make_init_dcl_lst();
 	ps->tmp_ans = make_init_dcl_lst();
-	ps->max_turn = 4;
+	ps->max_turn = MIN_LIMIT_SORT_CNT;
 	return (ps);
 }
 

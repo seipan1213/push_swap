@@ -243,32 +243,42 @@ void sort_min_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	sort_dfs(a, b, ps, 0);
 }
 
-bool check_avoid_cmd(t_push_swap *ps, int cmd)
+bool check_avoid_cmd(int cmd, int pre)
 {
-	t_dcl_lst *last;
+	if (cmd == PA && pre == PB)
+		return (true);
+	if (cmd == PB && pre == PA)
+		return (true);
+	if (cmd == RA && (pre == RRA || pre == RRR))
+		return (true);
+	if (cmd == RB && (pre == RRB || pre == RRR))
+		return (true);
+	if (cmd == RR && (pre == RRA || pre == RRB || pre == RRR))
+		return (true);
+	if (cmd == RRA && (pre == RA || pre == RR))
+		return (true);
+	if (cmd == RRB && (pre == RB || pre == RR))
+		return (true);
+	if (cmd == RRR && (pre == RA || pre == RB || pre == RR))
+		return (true);
+	if (cmd == SA && (pre == SA || pre == SS))
+		return (true);
+	if (cmd == SB && (pre == SB || pre == SS))
+		return (true);
+	if (cmd == SS && (pre == SA || pre == SB || pre == SS))
+		return (true);
+	return (false);
+}
 
-	last = get_last_lst(ps->tmp_ans);
-	if (last->value == PA && cmd == PB)
+bool cant_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
+{
+	if (cmd == PA && dcl_lst_size(b) == 0)
 		return (true);
-	if (last->value == PB && cmd == PA)
+	if (cmd == PB && dcl_lst_size(a) == 0)
 		return (true);
-	if (last->value == RA && cmd == RRA)
+	if ((cmd == SA || cmd == RA || cmd == RRA || cmd == RR || cmd == RRR) && dcl_lst_size(a) <= 1)
 		return (true);
-	if (last->value == RB && cmd == RRB)
-		return (true);
-	if (last->value == RR && cmd == RRR)
-		return (true);
-	if (last->value == RRA && cmd == RA)
-		return (true);
-	if (last->value == RRB && cmd == RB)
-		return (true);
-	if (last->value == RRR && cmd == RR)
-		return (true);
-	if (last->value == SA && cmd == SA)
-		return (true);
-	if (last->value == SB && cmd == SB)
-		return (true);
-	if (last->value == SS && cmd == SS)
+	if ((cmd == SB || cmd == RB || cmd == RRB || cmd == RR || cmd == RRR) && dcl_lst_size(b) <= 1)
 		return (true);
 	return (false);
 }
@@ -287,7 +297,7 @@ void sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn)
 	}
 	while (cmd++ < 11)
 	{
-		if (check_avoid_cmd(ps, cmd))
+		if (check_avoid_cmd(cmd, get_last_lst(ps->tmp_ans)->value) || cant_cmd(a, b, cmd) || turn >= ps->max_turn)
 			continue;
 		only_run_cmd(a, b, cmd, true);
 		dcl_lst_addback(ps->tmp_ans, cmd);
@@ -307,9 +317,9 @@ void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type)
 
 void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 {
-	if (cmd == SA)
+	if (cmd == SA || cmd == SS)
 		sab(a);
-	if (cmd == SB)
+	if (cmd == SB || cmd == SS)
 		sab(b);
 	if (cmd == PA)
 		pab(a, b);
@@ -327,9 +337,9 @@ void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 
 void run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 {
-	if (cmd == SA)
+	if (cmd == SA || cmd == SS)
 		sab(a);
-	if (cmd == SB)
+	if (cmd == SB || cmd == SS)
 		sab(b);
 	if (cmd == PA)
 		pab(b, a);

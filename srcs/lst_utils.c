@@ -112,7 +112,7 @@ void reset_lst(t_dcl_lst *lst)
 	int index;
 
 	lst_size = dcl_lst_size(lst);
-	lst = get_first_lst(lst);
+	lst = get_first_lst(lst)->prev;
 	index = 0;
 	while (index < lst_size)
 	{
