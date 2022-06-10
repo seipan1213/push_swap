@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:04 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:05 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:39:38 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void dcl_lst_addback(t_dcl_lst *lst, long value)
 	lst->prev = new;
 }
 
-t_dcl_lst *make_dcl_lst(int size, char **str)
+t_dcl_lst *make_lst(int size, char **str)
 {
 	t_dcl_lst *lst;
 	int index;
 
 	index = 0;
-	lst = make_init_dcl_lst();
+	lst = make_init_lst();
 	while (index < size)
 	{
 		dcl_lst_addback(lst, ps_atol(str[index]));
@@ -59,7 +59,7 @@ t_dcl_lst *make_dcl_lst(int size, char **str)
 	return lst;
 }
 
-t_dcl_lst *make_init_dcl_lst()
+t_dcl_lst *make_init_lst()
 {
 	t_dcl_lst *lst;
 
@@ -72,7 +72,7 @@ t_dcl_lst *make_init_dcl_lst()
 	return lst;
 }
 
-int dcl_lst_size(t_dcl_lst *lst)
+int get_lst_size(t_dcl_lst *lst)
 {
 	int index;
 

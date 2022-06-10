@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:01 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:02 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void clear_lst(t_dcl_lst *lst)
 	int lst_size;
 	int index;
 
-	lst_size = dcl_lst_size(lst) + 1;
+	lst_size = get_lst_size(lst) + 1;
 	index = 0;
 	while (index < lst_size)
 	{
@@ -47,7 +47,7 @@ void reset_lst(t_dcl_lst *lst)
 	int lst_size;
 	int index;
 
-	lst_size = dcl_lst_size(lst);
+	lst_size = get_lst_size(lst);
 	lst = get_first_lst(lst)->prev;
 	index = 0;
 	while (index < lst_size)

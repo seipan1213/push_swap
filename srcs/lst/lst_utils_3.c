@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:23:58 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:23:59 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:38:56 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void put_cmd(int cmd)
 		ft_putendl_fd("rrr", STDOUT_FILENO);
 }
 
-void reduction_stack(t_dcl_lst *lst)
+void reduction_stack(t_dcl_lst *lst) // 大幅OVER
 {
 	lst = get_first_lst(lst);
 	while (lst->value != NIL)

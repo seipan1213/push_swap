@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:36 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:36 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void update_ans(t_push_swap *ps, long turn)
 		return;
 	ps->max_turn = turn;
 	reset_lst(ps->ans);
-	ans_size = dcl_lst_size(ps->tmp_ans);
+	ans_size = get_lst_size(ps->tmp_ans);
 	tmp_ans = get_first_lst(ps->tmp_ans);
 	while (ans_size > 0)
 	{
@@ -65,13 +65,13 @@ bool check_avoid_cmd(int cmd, int pre)
 
 bool cant_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 {
-	if (cmd == PA && dcl_lst_size(b) == 0)
+	if (cmd == PA && get_lst_size(b) == 0)
 		return (true);
-	if (cmd == PB && dcl_lst_size(a) == 0)
+	if (cmd == PB && get_lst_size(a) == 0)
 		return (true);
-	if ((cmd == SA || cmd == RA || cmd == RRA || cmd == RR || cmd == RRR) && dcl_lst_size(a) <= 1)
+	if ((cmd == SA || cmd == RA || cmd == RRA || cmd == RR || cmd == RRR) && get_lst_size(a) <= 1)
 		return (true);
-	if ((cmd == SB || cmd == RB || cmd == RRB || cmd == RR || cmd == RRR) && dcl_lst_size(b) <= 1)
+	if ((cmd == SB || cmd == RB || cmd == RRB || cmd == RR || cmd == RRR) && get_lst_size(b) <= 1)
 		return (true);
 	return (false);
 }
@@ -83,7 +83,7 @@ void sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn)
 	cmd = -1;
 	if (turn >= ps->max_turn)
 		return;
-	if (dcl_lst_size(b) == 0 && is_sorted_lst(a, ps))
+	if (get_lst_size(b) == 0 && is_sorted_lst(a, ps))
 	{
 		update_ans(ps, turn);
 		return;

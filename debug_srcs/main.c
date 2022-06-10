@@ -7,8 +7,8 @@ int main(int argc, char **argv)
 	char *line;
 	int ret;
 
-	a = make_dcl_lst(argc - 1, argv + 1);
-	b = make_init_dcl_lst();
+	a = make_lst(argc - 1, argv + 1);
+	b = make_init_lst();
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if (!ft_strncmp(line, "sa", 3))

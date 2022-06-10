@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:09 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:10 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool sab(t_dcl_lst *a)
 	long tmp;
 	int size;
 
-	size = dcl_lst_size(a);
+	size = get_lst_size(a);
 	if (size <= 1)
 		return (false);
 	a = a->next;

@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:29 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:30 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:31:50 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ void put_err_exit(int exit_num)
 	exit(exit_num);
 }
 
-int div_up(int num, int div_num)
-{
-	return ((num + 1) / div_num);
-}
-
-void put_dcl_lst(t_dcl_lst *lst)
+void put_dcl_lst(t_dcl_lst *lst) //削除予定
 {
 	while (lst->value != NIL)
 		lst = lst->next;
@@ -54,7 +49,7 @@ void put_dcl_lst(t_dcl_lst *lst)
 	printf("\n");
 }
 
-void put_arr(long values[], int size)
+void put_arr(long values[], int size) //削除予定
 {
 	int index;
 

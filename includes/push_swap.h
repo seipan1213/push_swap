@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 00:48:32 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 01:39:38 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,15 @@ long ps_atol(char *str);
 void put_err_exit(int exit_num);
 void put_dcl_lst(t_dcl_lst *lst);
 void put_arr(long values[], int size);
-int div_up(int num, int div_num);
 
 void dcl_lst_addfront(t_dcl_lst *lst, long value);
 void dcl_lst_addback(t_dcl_lst *lst, long value);
-t_dcl_lst *make_dcl_lst(int size, char **str);
-t_dcl_lst *make_init_dcl_lst();
+t_dcl_lst *make_lst(int size, char **str);
+t_dcl_lst *make_init_lst();
 void ps_init_lst(t_push_swap *ps, char **lst);
 bool same_arg(int argc, char **argv);
 void push_swap(int argc, char **argv);
-int dcl_lst_size(t_dcl_lst *lst);
+int get_lst_size(t_dcl_lst *lst);
 t_dcl_lst *get_first_lst(t_dcl_lst *lst);
 t_dcl_lst *get_last_lst(t_dcl_lst *lst);
 void clear_lst(t_dcl_lst *lst);
