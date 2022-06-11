@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 16:53:17 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 00:52:32 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,9 @@ bool rrb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 bool rrr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 
 void put_stack(t_dcl_lst *a, t_dcl_lst *b);
+
+void checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b);
+bool check_str_cmd(char *line);
+void run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line);
+bool checker_is_sorted(t_dcl_lst *a);
 #endif
