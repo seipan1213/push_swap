@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:39:38 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:53:10 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn);
 void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type);
 void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
 void run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
-
+bool input_check(int argc, char **argv);
 void put_ans(t_push_swap *ps);
 void put_cmd(int cmd);
 

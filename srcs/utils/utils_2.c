@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:32 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:33 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:18:49 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ bool input_check(int argc, char **argv)
 	if (argc == 1)
 		return (false);
 	else if (same_arg(argc, argv))
-		return (false);
+		put_err_exit(1);
 	return (true);
 }

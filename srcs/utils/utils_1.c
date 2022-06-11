@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:29 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:31:50 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:22:01 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,26 @@ long ps_atol(char *str)
 {
 	int i;
 	int len;
+	long m;
 	long ans;
 
 	i = 0;
+	m = 1;
 	ans = 0;
+	if (str[i] == '-')
+	{
+		m = -1;
+		i++;
+	}
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		ans *= 10;
 		ans += str[i++] - '0';
 	}
 	len = ft_strlen(str);
-	if (len != i)
+	if (len != i || len > 11 || ans * m > INT_MAX || ans * m < INT_MIN)
 		put_err_exit(1);
-	return (ans);
+	return (ans * m);
 }
 
 void put_err_exit(int exit_num)
