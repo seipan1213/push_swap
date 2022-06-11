@@ -2,7 +2,16 @@ NAME		=	push_swap
 SRCSDIR		=	./srcs
 
 PUSH_SWAP_NAME	=	push_swap
-PUSH_SWAP_SRCS_NAME =  lst_utils.c main.c push_swap.c quick_sort.c utils.c command.c command_org.c ../debug_srcs/debug.c
+CMD_SRCS_NAME	=	command_1.c command_2.c command_3.c command_org.c
+LST_SRCS_NAME	=	lst_utils_1.c lst_utils_2.c lst_utils_3.c
+SORT_SRCS_NAME	=	quick_sort.c sort_min_stack_1.c sort_min_stack_2.c sort_stack_1.c sort_stack_2.c
+MAIN_SRCS_NAME	=	main.c  push_swap.c
+UTILS_SRCS_NAME	=	utils_1.c utils_2.c
+PUSH_SWAP_SRCS_NAME =	$(addprefix cmd/, ${CMD_SRCS_NAME})\
+						$(addprefix lst/, ${LST_SRCS_NAME})\
+						$(addprefix sort/, ${SORT_SRCS_NAME})\
+						$(addprefix main/, ${MAIN_SRCS_NAME})\
+						$(addprefix utils/, ${UTILS_SRCS_NAME})
 PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}/, ${PUSH_SWAP_SRCS_NAME})
 PUSH_SWAP_OBJS	=	${PUSH_SWAP_SRCS:.c=.o}
 
