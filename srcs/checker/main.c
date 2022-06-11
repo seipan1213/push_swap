@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	a = make_lst(argc - 1, argv + 1);
 	b = make_init_lst();
 	checker_run_cmd(a, b);
-	if (is_sorted(a))
+	if (checker_is_sorted(a))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
@@ -30,6 +30,7 @@ void checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
 		run_str_cmd(a, b, line);
 		free(line);
 	}
+	free(line);
 }
 
 bool check_str_cmd(char *line)

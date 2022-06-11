@@ -15,6 +15,16 @@ PUSH_SWAP_SRCS_NAME =	$(addprefix cmd/, ${CMD_SRCS_NAME})\
 PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}/, ${PUSH_SWAP_SRCS_NAME})
 PUSH_SWAP_OBJS	=	${PUSH_SWAP_SRCS:.c=.o}
 
+CHECKER_NAME		=	checker
+CHECKER_SRCSDIR		=	./srcs/checker/
+CHECKER_SRCS_NAME	=	main.c\
+						$(addprefix ../cmd/, ${CMD_SRCS_NAME})\
+						$(addprefix ../lst/, ${LST_SRCS_NAME})\
+						$(addprefix ../sort/, ${SORT_SRCS_NAME})\
+						$(addprefix ../utils/, ${UTILS_SRCS_NAME})
+CHECKER_SRCS	=	$(addprefix ${CHECKER_SRCSDIR}/, ${CHECKER_SRCS_NAME})
+CHECKER_OBJS	=	${CHECKER_SRCS:.c=.o}
+
 INCLUDES	=	-I ./includes -I ${LIBFTDIR}
 LIBFTDIR	=	./libft
 LIBFT		=	${LIBFTDIR}/libft.a
@@ -24,6 +34,8 @@ CFLAGS		=	-Wall -Wextra -Werror
 
 ${NAME}: ${PUSH_SWAP_NAME}
 
+bonus: ${CHECKER_NAME}
+
 all: ${NAME}
 
 ${LIBFT}:
@@ -31,6 +43,9 @@ ${LIBFT}:
 
 ${PUSH_SWAP_NAME}: ${PUSH_SWAP_OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${PUSH_SWAP_OBJS} ${LIBFT} ${INCLUDES} -o $@
+
+${CHECKER_NAME}: ${CHECKER_OBJS} ${LIBFT}
+	${CC} ${CFLAGS} ${CHECKER_OBJS} ${LIBFT} ${INCLUDES} -o $@
 
 .c.o:
 	${CC} ${CFLAGS} $< -c ${INCLUDES} -o $@
@@ -44,6 +59,7 @@ fclean: clean
 	${MAKE} fclean -C ${LIBFTDIR}
 
 re: fclean all
+
 
 debug: CFLAGS += -g -fsanitize=address
 debug: re
