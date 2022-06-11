@@ -51,11 +51,11 @@ ${CHECKER_NAME}: ${CHECKER_OBJS} ${LIBFT}
 	${CC} ${CFLAGS} $< -c ${INCLUDES} -o $@
 
 clean:
-	rm -f ${PUSH_SWAP_OBJS}
+	rm -f ${PUSH_SWAP_OBJS} ${CHECKER_OBJS}
 	${MAKE} clean -C ${LIBFTDIR}
 
 fclean: clean
-	rm -f ${PUSH_SWAP_NAME}
+	rm -f ${PUSH_SWAP_NAME} ${CHECKER_NAME}
 	${MAKE} fclean -C ${LIBFTDIR}
 
 re: fclean all
