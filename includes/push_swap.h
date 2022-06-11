@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 15:53:10 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:53:17 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ long get_mid_value(t_dcl_lst *lst);
 void quick_sort(long arr[], int left, int right);
 void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void move_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);

@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:43 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/11 22:51:23 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	{
 		if (get_lst_size(b) <= MIN_SORT_NUM)
 			sort_b(a, b, ps);
-		while (get_lst_size(b) > 0)
+		while (get_lst_size(b) > MIN_SORT_NUM)
 			div_b_stack(a, b, ps);
-		div_a_stack(a, b, ps);
+		if (get_lst_size(b) == 0)
+			div_a_stack(a, b, ps);
 		if (get_lst_size(ps->stack_size_lst) == 0 && get_lst_size(b) == 0)
 			dcl_lst_addfront(ps->stack_size_lst, ps->lst_size - ps->next_want_index);
 	}
@@ -62,15 +63,19 @@ void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	long mid;
 	int index;
+	int end_size;
 
 	index = 0;
 	mid = get_mid_value(a);
+	end_size = get_lst_size(a) / 2 + get_lst_size(a) % 2;
 	while (index < ps->now_sort_size)
 	{
 		if (get_first_lst(a)->value <= mid)
 			pb(a, b, ps);
 		else
 			ra(a, b, ps);
+		if (end_size <= get_lst_size(b))
+			break;
 		index++;
 	}
 }
@@ -89,6 +94,11 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 			ra(a, b, ps);
 			ps->next_want_index++;
 		}
+		else if ((get_first_lst(a)->next->value == ps->sorted_lst[ps->next_want_index]) && (selected_value == ps->sorted_lst[ps->next_want_index + 1]))
+		{
+			sa(a, b, ps);
+			continue;
+		}
 		else
 			pb(a, b, ps);
 		stack_size_first->value--;
@@ -106,7 +116,7 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 4行多い
 	int check_size;
 
 	b_mid = get_mid_value(b);
-	check_size = get_lst_size(b);
+	check_size = get_lst_size(b) / 2;
 	stack_size = 0;
 	while (check_size > 0)
 	{
@@ -125,7 +135,8 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 4行多い
 			pa(a, b, ps);
 			stack_size++;
 		}
-		check_size--;
+		if (!is_under)
+			check_size--;
 	}
 	dcl_lst_addfront(ps->stack_size_lst, stack_size);
 }
