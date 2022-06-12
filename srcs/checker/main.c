@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:58:21 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 22:51:01 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/13 00:34:46 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
 	while (ret > 0)
 	{
 		ret = get_next_line(0, &line);
-		if (ret < 0)
+		if (ret <= 0)
 			break ;
 		if (!check_str_cmd(line))
 			put_err_exit(1);
@@ -54,8 +54,8 @@ bool	check_str_cmd(char *line)
 		&& ft_strncmp(line, "ss", 3) && ft_strncmp(line, "pa", 3)
 		&& ft_strncmp(line, "pb", 3) && ft_strncmp(line, "ra", 3)
 		&& ft_strncmp(line, "rb", 3) && ft_strncmp(line, "rr", 3)
-		&& ft_strncmp(line, "rra", 3) && ft_strncmp(line, "rrb", 3)
-		&& ft_strncmp(line, "rrr", 3))
+		&& ft_strncmp(line, "rra", 4) && ft_strncmp(line, "rrb", 4)
+		&& ft_strncmp(line, "rrr", 4))
 		return (false);
 	return (true);
 }
