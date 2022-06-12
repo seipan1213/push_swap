@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:58:21 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/13 00:34:46 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/13 00:55:41 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
 	char	*line;
 	int		ret;
 
+	ret = 1;
 	while (ret > 0)
 	{
 		ret = get_next_line(0, &line);
