@@ -16,7 +16,7 @@ PUSH_SWAP_SRCS	=	$(addprefix ${SRCSDIR}/, ${PUSH_SWAP_SRCS_NAME})
 PUSH_SWAP_OBJS	=	${PUSH_SWAP_SRCS:.c=.o}
 
 CHECKER_NAME		=	checker
-CHECKER_SRCSDIR		=	./srcs/checker/
+CHECKER_SRCSDIR		=	./srcs/checker
 CHECKER_SRCS_NAME	=	main.c\
 						$(addprefix ../cmd/, ${CMD_SRCS_NAME})\
 						$(addprefix ../lst/, ${LST_SRCS_NAME})\
