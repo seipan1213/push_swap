@@ -6,26 +6,26 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:55 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:55 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:48:17 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void long_swap(long *la, long *lb)
+void	long_swap(long *la, long *lb)
 {
-	long tmp;
+	long	tmp;
 
 	tmp = *la;
 	*la = *lb;
 	*lb = tmp;
 }
 
-void quick_sort(long *arr, int left, int right)
+void	quick_sort(long *arr, int left, int right)
 {
-	int i;
-	int j;
-	int pivot;
+	int	i;
+	int	j;
+	int	pivot;
 
 	i = left;
 	j = right;
@@ -37,7 +37,7 @@ void quick_sort(long *arr, int left, int right)
 		while (arr[pivot] < arr[j])
 			j--;
 		if (i >= j)
-			break;
+			break ;
 		long_swap(&arr[i], &arr[j]);
 		i++;
 		j--;

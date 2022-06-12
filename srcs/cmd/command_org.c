@@ -6,16 +6,16 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:09 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:01:53 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool sab(t_dcl_lst *a)
+bool	sab(t_dcl_lst *a)
 {
-	long tmp;
-	int size;
+	long	tmp;
+	int		size;
 
 	size = get_lst_size(a);
 	if (size <= 1)
@@ -27,9 +27,9 @@ bool sab(t_dcl_lst *a)
 	return (true);
 }
 
-bool pab(t_dcl_lst *a, t_dcl_lst *b)
+bool	pab(t_dcl_lst *a, t_dcl_lst *b)
 {
-	t_dcl_lst *b_front;
+	t_dcl_lst	*b_front;
 
 	b_front = get_first_lst(b);
 	if (b_front->value == NIL)
@@ -43,10 +43,10 @@ bool pab(t_dcl_lst *a, t_dcl_lst *b)
 	return (true);
 }
 
-bool rab(t_dcl_lst *a)
+bool	rab(t_dcl_lst *a)
 {
-	t_dcl_lst *a_front;
-	t_dcl_lst *a_back;
+	t_dcl_lst	*a_front;
+	t_dcl_lst	*a_back;
 
 	a_front = get_first_lst(a);
 	a_back = get_last_lst(a);
@@ -61,10 +61,10 @@ bool rab(t_dcl_lst *a)
 	return (true);
 }
 
-bool rrab(t_dcl_lst *a)
+bool	rrab(t_dcl_lst *a)
 {
-	t_dcl_lst *a_front;
-	t_dcl_lst *a_back;
+	t_dcl_lst	*a_front;
+	t_dcl_lst	*a_back;
 
 	a_front = get_first_lst(a);
 	a_back = get_last_lst(a);

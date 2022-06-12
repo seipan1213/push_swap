@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/12 20:58:21 by sehattor          #+#    #+#             */
+/*   Updated: 2022/06/12 22:51:01 by sehattor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_dcl_lst *a;
-	t_dcl_lst *b;
+	t_dcl_lst	*a;
+	t_dcl_lst	*b;
 
 	if (!input_check(argc, argv))
 		return (0);
@@ -18,13 +30,16 @@ int main(int argc, char **argv)
 	clear_lst(b);
 }
 
-void checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
+void	checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
 {
-	char *line;
-	int ret;
+	char	*line;
+	int		ret;
 
-	while ((ret = get_next_line(0, &line)) > 0)
+	while (ret > 0)
 	{
+		ret = get_next_line(0, &line);
+		if (ret < 0)
+			break ;
 		if (!check_str_cmd(line))
 			put_err_exit(1);
 		run_str_cmd(a, b, line);
@@ -33,14 +48,19 @@ void checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b)
 	free(line);
 }
 
-bool check_str_cmd(char *line)
+bool	check_str_cmd(char *line)
 {
-	if (ft_strncmp(line, "sa", 3) && ft_strncmp(line, "sb", 3) && ft_strncmp(line, "ss", 3) && ft_strncmp(line, "pa", 3) && ft_strncmp(line, "pb", 3) && ft_strncmp(line, "ra", 3) && ft_strncmp(line, "rb", 3) && ft_strncmp(line, "rr", 3) && ft_strncmp(line, "rra", 3) && ft_strncmp(line, "rrb", 3) && ft_strncmp(line, "rrr", 3))
+	if (ft_strncmp(line, "sa", 3) && ft_strncmp(line, "sb", 3)
+		&& ft_strncmp(line, "ss", 3) && ft_strncmp(line, "pa", 3)
+		&& ft_strncmp(line, "pb", 3) && ft_strncmp(line, "ra", 3)
+		&& ft_strncmp(line, "rb", 3) && ft_strncmp(line, "rr", 3)
+		&& ft_strncmp(line, "rra", 3) && ft_strncmp(line, "rrb", 3)
+		&& ft_strncmp(line, "rrr", 3))
 		return (false);
 	return (true);
 }
 
-void run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line)
+void	run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line)
 {
 	if (!ft_strncmp(line, "sa", 3) || !ft_strncmp(line, "ss", 3))
 		sab(a);
@@ -60,7 +80,7 @@ void run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line)
 		rrab(b);
 }
 
-bool checker_is_sorted(t_dcl_lst *a)
+bool	checker_is_sorted(t_dcl_lst *a)
 {
 	a = get_first_lst(a);
 	while (a->value != NIL)

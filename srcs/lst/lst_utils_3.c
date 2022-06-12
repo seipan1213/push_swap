@@ -6,18 +6,18 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:23:58 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:38:56 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:39:26 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long get_mid_value(t_dcl_lst *lst)
+long	get_mid_value(t_dcl_lst *lst)
 {
-	long lst_ary[ARG_LIMIT + 10];
-	t_dcl_lst *tmp_lst;
-	int index;
-	int mid_index;
+	long		lst_ary[ARG_LIMIT + 10];
+	t_dcl_lst	*tmp_lst;
+	int			index;
+	int			mid_index;
 
 	tmp_lst = get_first_lst(lst);
 	ft_bzero(lst_ary, sizeof(long) * ARG_LIMIT + 10);
@@ -36,26 +36,26 @@ long get_mid_value(t_dcl_lst *lst)
 	return (lst_ary[mid_index]);
 }
 
-bool is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps)
+bool	is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	lst = get_first_lst(lst);
 	while (index < ps->lst_size)
 	{
 		if (lst->value != ps->sorted_lst[index])
-			return false;
+			return (false);
 		lst = lst->next;
 		index++;
 	}
-	return true;
+	return (true);
 }
 
-void put_ans(t_push_swap *ps)
+void	put_ans(t_push_swap *ps)
 {
+	t_dcl_lst	*lst;
 
-	t_dcl_lst *lst;
 	lst = ps->ans;
 	lst = get_first_lst(lst);
 	while (lst->value != NIL)
@@ -65,7 +65,7 @@ void put_ans(t_push_swap *ps)
 	}
 }
 
-void put_cmd(int cmd)
+void	put_cmd(int cmd)
 {
 	if (cmd == SA)
 		ft_putendl_fd("sa", STDOUT_FILENO);
@@ -91,36 +91,12 @@ void put_cmd(int cmd)
 		ft_putendl_fd("rrr", STDOUT_FILENO);
 }
 
-void reduction_stack(t_dcl_lst *lst) // 大幅OVER
+void	reduction_stack(t_dcl_lst *lst)
 {
 	lst = get_first_lst(lst);
 	while (lst->value != NIL)
 	{
-		if ((lst->value == PA && lst->next->value == PB) ||
-			(lst->value == PB && lst->next->value == PA))
-		{
-			lst = lst->prev;
-			delete_lst(lst->next);
-			delete_lst(lst->next);
-		}
-		else if ((lst->value == SA && lst->next->value == SB) ||
-				 (lst->value == SB && lst->next->value == SA))
-		{
-			lst->value = SS;
-			delete_lst(lst->next);
-		}
-		else if ((lst->value == RA && lst->next->value == RB) ||
-				 (lst->value == RB && lst->next->value == RA))
-		{
-			lst->value = RR;
-			delete_lst(lst->next);
-		}
-		else if ((lst->value == RRA && lst->next->value == RRB) ||
-				 (lst->value == RRB && lst->next->value == RRA))
-		{
-			lst->value = RRR;
-			delete_lst(lst->next);
-		}
+		reduction_cmd(&lst);
 		lst = lst->next;
 	}
 }

@@ -6,15 +6,15 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:25:04 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:39:38 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:47:43 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push_swap *ps_init(int argc, char **argv)
+t_push_swap	*ps_init(int argc, char **argv)
 {
-	t_push_swap *ps;
+	t_push_swap	*ps;
 
 	ps = malloc(sizeof(t_push_swap));
 	ft_bzero(ps, sizeof(t_push_swap));
@@ -22,7 +22,7 @@ t_push_swap *ps_init(int argc, char **argv)
 		put_err_exit(1);
 	ps->lst_size = argc - 1;
 	ps->now_sort_size = ps->lst_size;
-	ps->next_want_index = 0;
+	ps->want_i = 0;
 	ps_init_lst(ps, argv + 1);
 	ps->stack_size_lst = make_init_lst();
 	ps->ans = make_init_lst();
@@ -31,9 +31,9 @@ t_push_swap *ps_init(int argc, char **argv)
 	return (ps);
 }
 
-void ps_init_lst(t_push_swap *ps, char **lst)
+void	ps_init_lst(t_push_swap *ps, char **lst)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < ps->lst_size)
@@ -44,7 +44,7 @@ void ps_init_lst(t_push_swap *ps, char **lst)
 	quick_sort(ps->sorted_lst, 0, ps->lst_size - 1);
 }
 
-void free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b)
+void	free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b)
 {
 	clear_lst(a);
 	clear_lst(b);
@@ -54,11 +54,11 @@ void free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b)
 	free(ps);
 }
 
-void push_swap(int argc, char **argv)
+void	push_swap(int argc, char **argv)
 {
-	t_dcl_lst *a;
-	t_dcl_lst *b;
-	t_push_swap *ps;
+	t_dcl_lst	*a;
+	t_dcl_lst	*b;
+	t_push_swap	*ps;
 
 	a = make_lst(argc - 1, argv + 1);
 	b = make_init_lst();
@@ -66,7 +66,7 @@ void push_swap(int argc, char **argv)
 	if (is_sorted_lst(a, ps))
 	{
 		free_push_swap(ps, a, b);
-		return;
+		return ;
 	}
 	if (get_lst_size(a) > 5)
 		sort_stack(a, b, ps);

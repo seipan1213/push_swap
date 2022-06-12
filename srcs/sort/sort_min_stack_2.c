@@ -6,13 +6,13 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:40 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:48:41 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type)
+void	only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type)
 {
 	if (type)
 		run_cmd(a, b, cmd);
@@ -20,7 +20,7 @@ void only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type)
 		run_r_cmd(a, b, cmd);
 }
 
-void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
+void	run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 {
 	if (cmd == SA || cmd == SS)
 		sab(a);
@@ -40,7 +40,7 @@ void run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 		rrab(b);
 }
 
-void run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
+void	run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd)
 {
 	if (cmd == SA || cmd == SS)
 		sab(a);

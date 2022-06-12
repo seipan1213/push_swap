@@ -6,13 +6,13 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:18 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:19 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:00:12 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool ra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	ra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)b;
 	rab(a);
@@ -20,7 +20,7 @@ bool ra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool rb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	rb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)a;
 	rab(b);
@@ -28,7 +28,7 @@ bool rb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool rr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	rr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	rab(a);
 	rab(b);
@@ -36,7 +36,7 @@ bool rr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool rra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	rra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)b;
 	rrab(a);
@@ -44,7 +44,7 @@ bool rra(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool rrb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	rrb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)a;
 	rrab(b);

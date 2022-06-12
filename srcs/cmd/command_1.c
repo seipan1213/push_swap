@@ -6,13 +6,13 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:20 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:24:22 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:02:23 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool sa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	sa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)b;
 	sab(a);
@@ -20,7 +20,7 @@ bool sa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool sb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	sb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	(void)a;
 	sab(b);
@@ -28,7 +28,7 @@ bool sb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool ss(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	ss(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	sab(a);
 	sab(b);
@@ -36,14 +36,14 @@ bool ss(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	return (true);
 }
 
-bool pa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	pa(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	if (pab(a, b))
 		dcl_lst_addback(ps->ans, PA);
 	return (true);
 }
 
-bool pb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
+bool	pb(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	if (pab(b, a))
 		dcl_lst_addback(ps->ans, PB);

@@ -6,13 +6,13 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:01 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 01:39:15 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:09:37 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dcl_lst *get_first_lst(t_dcl_lst *lst)
+t_dcl_lst	*get_first_lst(t_dcl_lst *lst)
 {
 	while (lst->value != NIL)
 		lst = lst->next;
@@ -20,7 +20,7 @@ t_dcl_lst *get_first_lst(t_dcl_lst *lst)
 	return (lst);
 }
 
-t_dcl_lst *get_last_lst(t_dcl_lst *lst)
+t_dcl_lst	*get_last_lst(t_dcl_lst *lst)
 {
 	while (lst->value != NIL)
 		lst = lst->next;
@@ -28,10 +28,10 @@ t_dcl_lst *get_last_lst(t_dcl_lst *lst)
 	return (lst);
 }
 
-void clear_lst(t_dcl_lst *lst)
+void	clear_lst(t_dcl_lst *lst)
 {
-	int lst_size;
-	int index;
+	int	lst_size;
+	int	index;
 
 	lst_size = get_lst_size(lst) + 1;
 	index = 0;
@@ -42,10 +42,10 @@ void clear_lst(t_dcl_lst *lst)
 	}
 }
 
-void reset_lst(t_dcl_lst *lst)
+void	reset_lst(t_dcl_lst *lst)
 {
-	int lst_size;
-	int index;
+	int	lst_size;
+	int	index;
 
 	lst_size = get_lst_size(lst);
 	lst = get_first_lst(lst)->prev;
@@ -57,10 +57,10 @@ void reset_lst(t_dcl_lst *lst)
 	}
 }
 
-void delete_lst(t_dcl_lst *lst)
+void	delete_lst(t_dcl_lst *lst)
 {
-	t_dcl_lst *prev;
-	t_dcl_lst *next;
+	t_dcl_lst	*prev;
+	t_dcl_lst	*next;
 
 	prev = lst->prev;
 	next = lst->next;

@@ -3,7 +3,7 @@ SRCSDIR		=	./srcs
 
 PUSH_SWAP_NAME	=	push_swap
 CMD_SRCS_NAME	=	command_1.c command_2.c command_3.c command_org.c
-LST_SRCS_NAME	=	lst_utils_1.c lst_utils_2.c lst_utils_3.c
+LST_SRCS_NAME	=	lst_utils_1.c lst_utils_2.c lst_utils_3.c lst_utils_4.c
 SORT_SRCS_NAME	=	quick_sort.c sort_min_stack_1.c sort_min_stack_2.c sort_stack_1.c sort_stack_2.c
 MAIN_SRCS_NAME	=	main.c  push_swap.c
 UTILS_SRCS_NAME	=	utils_1.c utils_2.c

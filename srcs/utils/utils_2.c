@@ -6,16 +6,16 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:32 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 16:18:49 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 21:02:48 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool same_arg(int argc, char **argv)
+bool	same_arg(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < argc)
@@ -34,7 +34,7 @@ bool same_arg(int argc, char **argv)
 	return (false);
 }
 
-bool input_check(int argc, char **argv)
+bool	input_check(int argc, char **argv)
 {
 	if (argc == 1)
 		return (false);

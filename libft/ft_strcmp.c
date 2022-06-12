@@ -6,15 +6,15 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 14:48:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/08 23:15:49 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:53:31 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-int ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (s1[cnt] && s2[cnt])
