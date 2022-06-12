@@ -73,7 +73,12 @@ void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		if (get_first_lst(a)->value <= mid)
 			pb(a, b, ps);
 		else
+		{
+			if (get_first_lst(b)->value < get_mid_value(b))
+				rr(a, b, ps);
+			else
 			ra(a, b, ps);
+		}
 		if (end_size <= get_lst_size(b))
 			break;
 		index++;
@@ -91,6 +96,9 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		selected_value = get_first_lst(a)->value;
 		if (selected_value == ps->sorted_lst[ps->next_want_index])
 		{
+			if (get_first_lst(b)->value < get_mid_value(b))
+				rr(a, b, ps);
+			else
 			ra(a, b, ps);
 			ps->next_want_index++;
 		}
