@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 23:55:56 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 23:58:06 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,57 +58,63 @@ typedef struct s_push_swap
 	t_dcl_lst			*tmp_ans;
 }						t_push_swap;
 
-
 /* push_swap */
-t_push_swap	*ps_init(int argc, char **argv);
-void	ps_init_lst(t_push_swap *ps, char **lst);
-void	free_push_swap(t_push_swap *ps, t_dcl_lst *a, t_dcl_lst *b);
-void	push_swap(int argc, char **argv);
+t_push_swap				*ps_init(int argc, char **argv);
+void					ps_init_lst(t_push_swap *ps, char **lst);
+void					free_push_swap(t_push_swap *ps, t_dcl_lst *a,
+							t_dcl_lst *b);
+void					push_swap(int argc, char **argv);
 
 /* quick_sort */
-void	long_swap(long *la, long *lb);
-void	quick_sort(long *arr, int left, int right);
+void					long_swap(long *la, long *lb);
+void					quick_sort(long *arr, int left, int right);
 
 /* sort_stack */
-void	sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void	sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void	half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void	div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void	div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void					sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void					sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
+void					half_set_stack(t_dcl_lst *a, t_dcl_lst *b,
+							t_push_swap *ps);
+void					div_a_stack(t_dcl_lst *a, t_dcl_lst *b,
+							t_push_swap *ps);
+void					div_b_stack(t_dcl_lst *a, t_dcl_lst *b,
+							t_push_swap *ps);
 
 /* sort_min_stack */
-void	sort_min_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
-void	update_ans(t_push_swap *ps, long turn);
-bool	check_avoid_cmd(int cmd, int pre);
-bool	cant_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
-void	sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn);
-void	only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd, bool type);
-void	run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
-void	run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
+void					sort_min_stack(t_dcl_lst *a, t_dcl_lst *b,
+							t_push_swap *ps);
+void					update_ans(t_push_swap *ps, long turn);
+bool					check_avoid_cmd(int cmd, int pre);
+bool					cant_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
+void					sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps,
+							long turn);
+void					only_run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd,
+							bool type);
+void					run_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
+void					run_r_cmd(t_dcl_lst *a, t_dcl_lst *b, int cmd);
 
 /* utils */
-long	ps_atol(char *str);
-void	put_err_exit(int exit_num);
-bool	same_arg(int argc, char **argv);
-bool	input_check(int argc, char **argv);
+long					ps_atol(char *str);
+void					put_err_exit(int exit_num);
+bool					same_arg(int argc, char **argv);
+bool					input_check(int argc, char **argv);
 
 /* lst_utils_X */
-void	dcl_lst_addfront(t_dcl_lst *lst, long value);
-void	dcl_lst_addback(t_dcl_lst *lst, long value);
-t_dcl_lst	*make_lst(int size, char **str);
-t_dcl_lst	*make_init_lst(void);
-int	get_lst_size(t_dcl_lst *lst);
-t_dcl_lst	*get_first_lst(t_dcl_lst *lst);
-t_dcl_lst	*get_last_lst(t_dcl_lst *lst);
-void	clear_lst(t_dcl_lst *lst);
-void	reset_lst(t_dcl_lst *lst);
-void	delete_lst(t_dcl_lst *lst);
-long	get_mid_value(t_dcl_lst *lst);
-bool	is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
-void	put_ans(t_push_swap *ps);
-void	put_cmd(int cmd);
-void	reduction_stack(t_dcl_lst *lst);
-void	reduction_cmd(t_dcl_lst **lst);
+void					dcl_lst_addfront(t_dcl_lst *lst, long value);
+void					dcl_lst_addback(t_dcl_lst *lst, long value);
+t_dcl_lst				*make_lst(int size, char **str);
+t_dcl_lst				*make_init_lst(void);
+int						get_lst_size(t_dcl_lst *lst);
+t_dcl_lst				*get_first_lst(t_dcl_lst *lst);
+t_dcl_lst				*get_last_lst(t_dcl_lst *lst);
+void					clear_lst(t_dcl_lst *lst);
+void					reset_lst(t_dcl_lst *lst);
+void					delete_lst(t_dcl_lst *lst);
+long					get_mid_value(t_dcl_lst *lst);
+bool					is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
+void					put_ans(t_push_swap *ps);
+void					put_cmd(int cmd);
+void					reduction_stack(t_dcl_lst *lst);
+void					reduction_cmd(t_dcl_lst **lst);
 
 /* command_org */
 bool					sab(t_dcl_lst *a);
