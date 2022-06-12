@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:43 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/11 22:51:23 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 20:39:59 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,20 @@ void sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 	}
 }
 
-void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 2行多い
+void sort_b(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	int pool_count;
 
 	pool_count = 0;
 	while (get_lst_size(b) > 0 || pool_count > 0)
 	{
-		if (get_first_lst(b)->value == ps->sorted_lst[ps->next_want_index])
-		{
-			pa(a, b, ps);
-			ra(a, b, ps);
-			ps->next_want_index++;
-		}
-		else if (get_first_lst(a)->value == ps->sorted_lst[ps->next_want_index])
+		if (get_first_lst(a)->value == ps->sorted_lst[ps->next_want_index])
 		{
 			ra(a, b, ps);
 			pool_count--;
 			ps->next_want_index++;
 		}
-		else if (get_first_lst(b)->value < get_first_lst(a)->value || pool_count <= 0)
+		else if (get_first_lst(b)->value == ps->sorted_lst[ps->next_want_index] || get_first_lst(b)->value < get_first_lst(a)->value || pool_count <= 0)
 		{
 			pa(a, b, ps);
 			pool_count++;
@@ -77,7 +71,7 @@ void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 			if (get_first_lst(b)->value < get_mid_value(b))
 				rr(a, b, ps);
 			else
-			ra(a, b, ps);
+				ra(a, b, ps);
 		}
 		if (end_size <= get_lst_size(b))
 			break;
@@ -87,22 +81,20 @@ void half_set_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 
 void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	long selected_value;
 	t_dcl_lst *stack_size_first;
 
 	stack_size_first = get_first_lst(ps->stack_size_lst);
 	while (stack_size_first->value > 0)
 	{
-		selected_value = get_first_lst(a)->value;
-		if (selected_value == ps->sorted_lst[ps->next_want_index])
+		if (get_first_lst(a)->value == ps->sorted_lst[ps->next_want_index])
 		{
 			if (get_first_lst(b)->value < get_mid_value(b))
 				rr(a, b, ps);
 			else
-			ra(a, b, ps);
+				ra(a, b, ps);
 			ps->next_want_index++;
 		}
-		else if ((get_first_lst(a)->next->value == ps->sorted_lst[ps->next_want_index]) && (selected_value == ps->sorted_lst[ps->next_want_index + 1]))
+		else if ((get_first_lst(a)->next->value == ps->sorted_lst[ps->next_want_index]) && (get_first_lst(a)->value == ps->sorted_lst[ps->next_want_index + 1]))
 		{
 			sa(a, b, ps);
 			continue;
@@ -115,22 +107,19 @@ void div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 		delete_lst(stack_size_first);
 }
 
-void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 4行多い
+void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 2行多い
 {
 	bool is_under;
-	long selected_value;
 	long b_mid;
-	long stack_size;
 	int check_size;
 
 	b_mid = get_mid_value(b);
 	check_size = get_lst_size(b) / 2;
-	stack_size = 0;
+	dcl_lst_addfront(ps->stack_size_lst, 0);
 	while (check_size > 0)
 	{
-		selected_value = get_first_lst(b)->value;
-		is_under = selected_value <= b_mid;
-		if (selected_value == ps->sorted_lst[ps->next_want_index])
+		is_under = get_first_lst(b)->value <= b_mid;
+		if (get_first_lst(b)->value == ps->sorted_lst[ps->next_want_index])
 		{
 			pa(a, b, ps);
 			ra(a, b, ps);
@@ -141,10 +130,9 @@ void div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps) // 4行多い
 		else
 		{
 			pa(a, b, ps);
-			stack_size++;
+			get_first_lst(ps->stack_size_lst)->value++;
 		}
 		if (!is_under)
 			check_size--;
 	}
-	dcl_lst_addfront(ps->stack_size_lst, stack_size);
 }

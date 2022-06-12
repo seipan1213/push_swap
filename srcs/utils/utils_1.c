@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:29 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 01:18:32 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 20:43:05 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,4 @@ void put_err_exit(int exit_num)
 {
 	ft_putendl_fd("ERROR", STDOUT_FILENO);
 	exit(exit_num);
-}
-
-void put_dcl_lst(t_dcl_lst *lst) //削除予定
-{
-	while (lst->value != NIL)
-		lst = lst->next;
-	while (lst->value != NIL)
-	{
-		printf("%ld\n", lst->value);
-		lst = lst->next;
-	}
-	printf("\n");
-}
-
-void put_arr(long values[], int size) //削除予定
-{
-	int index;
-
-	index = 0;
-	while (index < size)
-	{
-		printf("%ld\n", values[index]);
-		index++;
-	}
-	printf("\n");
 }

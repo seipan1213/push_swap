@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 00:52:32 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 20:43:07 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ typedef struct s_push_swap
 
 long ps_atol(char *str);
 void put_err_exit(int exit_num);
-void put_dcl_lst(t_dcl_lst *lst);
-void put_arr(long values[], int size);
 
 void dcl_lst_addfront(t_dcl_lst *lst, long value);
 void dcl_lst_addback(t_dcl_lst *lst, long value);
