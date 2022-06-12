@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:43 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 22:47:52 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/12 23:44:53 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,30 +114,28 @@ void	div_a_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 
 void	div_b_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
-	bool	is_under;
 	long	b_mid;
-	int		check_size;
+	int		upper_size;
 
 	b_mid = get_mid_value(b);
-	check_size = get_lst_size(b) / 2;
+	upper_size = get_lst_size(b) / 2;
 	dcl_lst_addfront(ps->stack_size_lst, 0);
-	while (check_size > 0)
+	while (upper_size > 0)
 	{
-		is_under = get_first_lst(b)->value <= b_mid;
+		if (!(get_first_lst(b)->value <= b_mid))
+			upper_size--;
 		if (get_first_lst(b)->value == ps->sorted_lst[ps->want_i])
 		{
 			pa(a, b, ps);
 			ra(a, b, ps);
 			ps->want_i++;
 		}
-		else if (is_under)
+		else if (get_first_lst(b)->value <= b_mid)
 			rb(a, b, ps);
 		else
 		{
 			pa(a, b, ps);
 			get_first_lst(ps->stack_size_lst)->value++;
 		}
-		if (!is_under)
-			check_size--;
 	}
 }
