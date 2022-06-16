@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:43 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/16 19:45:22 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:59:49 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_stack(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps)
 {
 	half_set_stack(a, b, ps);
-	while (!is_sorted_lst(a) || get_lst_size(b) !=0)
+	while (!is_sorted_lst(a) || get_lst_size(b) != 0)
 	{
 		if (get_lst_size(b) <= MIN_SORT_NUM)
 			sort_b(a, b, ps);
