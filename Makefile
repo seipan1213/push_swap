@@ -1,7 +1,6 @@
 NAME		=	push_swap
 SRCSDIR		=	./srcs
 
-PUSH_SWAP_NAME	=	push_swap
 CMD_SRCS_NAME	=	command_1.c command_2.c command_3.c command_org.c
 LST_SRCS_NAME	=	lst_utils_1.c lst_utils_2.c lst_utils_3.c lst_utils_4.c
 SORT_SRCS_NAME	=	quick_sort.c sort_min_stack_1.c sort_min_stack_2.c sort_stack_1.c
@@ -32,16 +31,14 @@ LIBFT		=	${LIBFTDIR}/libft.a
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 
-${NAME}: ${PUSH_SWAP_NAME}
+all: ${NAME}
 
 bonus: ${CHECKER_NAME}
-
-all: ${NAME}
 
 ${LIBFT}:
 	${MAKE} -C ${LIBFTDIR}
 
-${PUSH_SWAP_NAME}: ${PUSH_SWAP_OBJS} ${LIBFT}
+${NAME}: ${PUSH_SWAP_OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${PUSH_SWAP_OBJS} ${LIBFT} ${INCLUDES} -o $@
 
 ${CHECKER_NAME}: ${CHECKER_OBJS} ${LIBFT}
@@ -55,7 +52,7 @@ clean:
 	${MAKE} clean -C ${LIBFTDIR}
 
 fclean: clean
-	rm -f ${PUSH_SWAP_NAME} ${CHECKER_NAME}
+	rm -f ${NAME} ${CHECKER_NAME}
 	${MAKE} fclean -C ${LIBFTDIR}
 
 re: fclean all
