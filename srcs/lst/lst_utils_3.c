@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:23:58 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 22:39:26 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:42:54 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,14 @@ long	get_mid_value(t_dcl_lst *lst)
 	return (lst_ary[mid_index]);
 }
 
-bool	is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps)
+bool	is_sorted_lst(t_dcl_lst *lst)
 {
-	int	index;
-
-	index = 0;
 	lst = get_first_lst(lst);
-	while (index < ps->lst_size)
+	while (lst->value != NIL)
 	{
-		if (lst->value != ps->sorted_lst[index])
+		if (lst->prev->value >= lst->value)
 			return (false);
 		lst = lst->next;
-		index++;
 	}
 	return (true);
 }

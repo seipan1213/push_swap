@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:36 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 22:42:25 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:45:22 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	sort_dfs(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps, long turn)
 	cmd = -1;
 	if (turn >= ps->max_turn)
 		return ;
-	if (get_lst_size(b) == 0 && is_sorted_lst(a, ps))
+	if (get_lst_size(b) == 0 && is_sorted_lst(a))
 	{
 		update_ans(ps, turn);
 		return ;

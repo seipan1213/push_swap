@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:39 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 23:58:06 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:44:00 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void					clear_lst(t_dcl_lst *lst);
 void					reset_lst(t_dcl_lst *lst);
 void					delete_lst(t_dcl_lst *lst);
 long					get_mid_value(t_dcl_lst *lst);
-bool					is_sorted_lst(t_dcl_lst *lst, t_push_swap *ps);
+bool					is_sorted_lst(t_dcl_lst *lst);
 void					put_ans(t_push_swap *ps);
 void					put_cmd(int cmd);
 void					reduction_stack(t_dcl_lst *lst);
@@ -139,6 +139,5 @@ bool					rrr(t_dcl_lst *a, t_dcl_lst *b, t_push_swap *ps);
 void					checker_run_cmd(t_dcl_lst *a, t_dcl_lst *b);
 bool					check_str_cmd(char *line);
 void					run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line);
-bool					checker_is_sorted(t_dcl_lst *a);
 
 #endif

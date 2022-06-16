@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:25:04 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 22:47:43 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:45:22 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	push_swap(int argc, char **argv)
 	a = make_lst(argc - 1, argv + 1);
 	b = make_init_lst();
 	ps = ps_init(argc, argv);
-	if (is_sorted_lst(a, ps))
+	if (is_sorted_lst(a))
 	{
 		free_push_swap(ps, a, b);
 		return ;

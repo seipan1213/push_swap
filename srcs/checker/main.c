@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:58:21 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/13 00:55:41 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:46:45 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	a = make_lst(argc - 1, argv + 1);
 	b = make_init_lst();
 	checker_run_cmd(a, b);
-	if (checker_is_sorted(a))
+	if (is_sorted_lst(a))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
@@ -79,16 +79,4 @@ void	run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line)
 		rrab(a);
 	if (!ft_strncmp(line, "rrb", 3) || !ft_strncmp(line, "rrr", 3))
 		rrab(b);
-}
-
-bool	checker_is_sorted(t_dcl_lst *a)
-{
-	a = get_first_lst(a);
-	while (a->value != NIL)
-	{
-		if (a->prev->value >= a->value)
-			return (false);
-		a = a->next;
-	}
-	return (true);
 }
