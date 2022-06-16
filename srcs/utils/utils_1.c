@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:24:29 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/12 23:54:30 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:35:58 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ps_atol(char *str)
 
 void	put_err_exit(int exit_num)
 {
-	ft_putendl_fd("ERROR", STDOUT_FILENO);
+	ft_putendl_fd("ERROR", STDERR_FILENO);
 	exit(exit_num);
 }
 
