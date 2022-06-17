@@ -6,7 +6,7 @@
 /*   By: sehattor <sehattor@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:58:21 by sehattor          #+#    #+#             */
-/*   Updated: 2022/06/16 19:59:49 by sehattor         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:18:40 by sehattor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	run_str_cmd(t_dcl_lst *a, t_dcl_lst *b, char *line)
 		rab(a);
 	if (!ft_strncmp(line, "rb", 3) || !ft_strncmp(line, "rr", 3))
 		rab(b);
-	if (!ft_strncmp(line, "rra", 3) || !ft_strncmp(line, "rrr", 3))
+	if (!ft_strncmp(line, "rra", 4) || !ft_strncmp(line, "rrr", 4))
 		rrab(a);
-	if (!ft_strncmp(line, "rrb", 3) || !ft_strncmp(line, "rrr", 3))
+	if (!ft_strncmp(line, "rrb", 4) || !ft_strncmp(line, "rrr", 4))
 		rrab(b);
 }
