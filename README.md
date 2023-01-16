@@ -1,5 +1,5 @@
 # push_swap
-https://user-images.githubusercontent.com/38822155/212694814-47f4757a-c1f2-4d7b-acd2-9d7231d3ae54.mp4
+https://user-images.githubusercontent.com/38822155/212700969-b2c7a97f-e325-4ea4-bf7c-fbfac4ef9421.mp4
 
 ## 概要
 - 2つのスタック(a,b)、11種類のコマンドを利用してソートを行うプログラム
